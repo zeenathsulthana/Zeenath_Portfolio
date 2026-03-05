@@ -11,7 +11,7 @@ import { projects } from "./content/portfolio.js";
 export default function App() {
   const ref = useRef(null);
   const [active, setActive] = useState(null);
-  const bgUrl = `${import.meta.env.BASE_URL}media/images/1402305.png`;
+  const bgUrl = `${import.meta.env.BASE_URL}media/images/lone-tree-crescent-moon-half-moon-starry-sky-night-lake-3840x3840-7701.jpg`;
 
   useEffect(() => {
     const el = ref.current;
