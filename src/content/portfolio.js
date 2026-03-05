@@ -76,7 +76,7 @@ export const awards = [
       "Recognized for product ownership, dashboard development, and cross-functional execution.",
     description:
       "Acknowledgement for contributions to product operations, stakeholder alignment, and analytics-led delivery improvement.",
-    pdf: `${base}media/pdf/mvp award.pdf`,
+    pdf: `${base}media/pdf/mvp award .pdf`,
   },
   {
     id: "award-3",
