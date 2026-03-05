@@ -59,7 +59,7 @@ export const awards = [
     title: "Best Paper Award",
     issuer: "WASET Conference",
     year: "2022",
-    thumbnail: `${base}media/images/Screenshot 2026-03-05 233142.png`,
+    thumbnail: `${base}media/images/bestpaper.png`,
     summary:
       "Received the best paper award for research on video quality algorithms presented at an international conference in Greece.",
     description:
@@ -83,7 +83,7 @@ export const awards = [
     title: "WASET International research paper presentation",
     issuer: "WASET Conference",
     year: "2022",
-    thumbnail: `${base}media/images/best-paper-thumb.jpg`,
+    thumbnail: `${base}media/images/presentation.png`,
     summary:
       "Received the best paper award for research on video quality algorithms presented at an international conference in Greece.",
     description:
@@ -95,7 +95,7 @@ export const awards = [
     title: "Session co-chair panel",
     issuer: "WASET Greece, Athens",
     year: "2024",
-    thumbnail: `${base}media/images/appviewx-award-thumb.jpg`,
+    thumbnail: `${base}media/images/chair.png`,
     summary:
       "Recognized for product ownership, dashboard development, and cross-functional execution.",
     description:
@@ -107,7 +107,7 @@ export const awards = [
     title: "Financial Markets",
     issuer: "Yale university-Coursera",
     year: "2022",
-    thumbnail: `${base}media/images/best-paper-thumb.jpg`,
+    thumbnail: `${base}media/images/yale.png`,
     summary:
       "Received the best paper award for research on video quality algorithms presented at an international conference in Greece.",
     description:
@@ -119,7 +119,7 @@ export const awards = [
     title: "International Business",
     issuer: "University of Mexico-Coursera",
     year: "2024",
-    thumbnail: `${base}media/images/appviewx-award-thumb.jpg`,
+    thumbnail: `${base}media/images/mexico.png`,
     summary:
       "Recognized for product ownership, dashboard development, and cross-functional execution.",
     description:
