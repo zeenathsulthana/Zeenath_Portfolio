@@ -59,7 +59,7 @@ export const experiences = [
     company: "Roquette",
     logo: `${base}media/images/logo-roquette.webp`,
     role: "Student Consultant",
-    location: "Lille, France",
+    location: "France",
     start: "Nov 2025",
     end: "May 2026",
     description: "Roquette is a B2B pharma,health,beauty ingredient supplier. They wanted to implement AI in several parts of their workflows so that their processes are streamlined, faster and better. Deliverables included AI in client identification and targetting, marketing and content creation usecases, Ml based inventory, supply chain and manufacturing enhancements.",

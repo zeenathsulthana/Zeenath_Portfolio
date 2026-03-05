@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useMemo } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { X } from "lucide-react";
 
@@ -30,55 +30,29 @@ function LogoCarousel({ experiences }) {
 }
 
 function Roadmap({ experiences }) {
-  const pathRef = useRef(null);
-  const [points, setPoints] = useState([]);
+  // Bigger canvas so left/right cards have room; wrapper provides horizontal scroll
+  const W = 1280;
 
-  // Tighter vertical rhythm than before to reduce "air" between items
-  const H = useMemo(
-    () => Math.max(760, experiences.length * 200) + 220,
-    [experiences.length]
-  );
+  // Spacing controls (tweak these if you want tighter/looser)
+  const TOP = 80;
+  const BOTTOM = 90;
+  const STEP = 220;
 
-  const W = 1100;
-
-  const d = useMemo(() => {
-    // Re-centered S-curve for wider canvas
-    const xL = 260;
-    const xR = 900;
-
-    const y0 = 80;
-    const y1 = H * 0.28;
-    const y2 = H * 0.52;
-    const y3 = H * 0.76;
-    const y4 = H - 120;
-
-    return `
-      M ${xL} ${y0}
-      C ${xR} ${y0 + 120}, ${xL} ${y1 - 120}, ${xR} ${y1}
-      S ${xL} ${y2}, ${xR} ${y2 + 120}
-      S ${xL} ${y3}, ${xR} ${y3 + 120}
-      S ${xL} ${y4 - 80}, ${xR} ${y4}
-    `;
-  }, [H]);
-
-  useEffect(() => {
-    const path = pathRef.current;
-    if (!path) return;
-
-    const total = path.getTotalLength();
+  const H = useMemo(() => {
     const n = experiences.length;
+    return Math.max(760, TOP + BOTTOM + Math.max(0, n - 1) * STEP);
+  }, [experiences.length]);
 
-    const pts = Array.from({ length: n }, (_, i) => {
-      const t = n === 1 ? 0.5 : i / (n - 1);
-      const p = path.getPointAtLength(total * t);
-      return { x: p.x, y: p.y };
-    });
+  const xLine = Math.round(W / 2);
 
-    setPoints(pts);
-  }, [experiences.length, d]);
+  // Alternating card layout
+  const CONNECT = 18;
+  const GAP = 12;
+  const CARD_SHIFT = CONNECT + GAP;
 
   return (
     <div className="relative mx-auto" style={{ width: W, height: H }}>
+      {/* Vertical line */}
       <svg
         className="absolute inset-0"
         width={W}
@@ -92,10 +66,11 @@ function Roadmap({ experiences }) {
           </linearGradient>
         </defs>
 
-        <path
-          ref={pathRef}
-          d={d}
-          fill="none"
+        <line
+          x1={xLine}
+          y1={TOP}
+          x2={xLine}
+          y2={H - BOTTOM}
           stroke="url(#road)"
           strokeWidth="6"
           strokeLinecap="round"
@@ -103,48 +78,43 @@ function Roadmap({ experiences }) {
         />
       </svg>
 
+      {/* Nodes + cards */}
       {experiences.map((e, i) => {
-        const p = points[i] || { x: 260, y: 80 + i * 210 };
-        const centerX = W / 2;
-
-// Base side from the point position (keeps cards on the “outer” side)
-const baseLeft = (p.x ?? centerX) < centerX;
-
-// Enforce alternation: even indexes follow base, odd indexes flip
-const leftSide = i % 2 === 0 ? baseLeft : !baseLeft;
-
-const dir = leftSide ? -1 : 1;
-
-
-        // Pull cards closer to dots + make width responsive
-        const GAP = 10;
-        const CONNECT = 16;
+        const y = TOP + i * STEP;
+        const leftSide = i % 2 === 0; // strict alternation
+        const dir = leftSide ? -1 : 1;
 
         return (
           <motion.div
             key={e.id}
             className="absolute"
             style={{
-              left: p.x,
-              top: p.y,
+              left: xLine,
+              top: y,
               transform: "translate(-50%, -50%)",
             }}
             initial={{ opacity: 0, y: 8 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.05 * i }}
+            transition={{ delay: 0.04 * i }}
           >
+            {/* Dot */}
             <div className="mx-auto h-3.5 w-3.5 rounded-full border border-white/35 bg-white/25 backdrop-blur" />
 
+            {/* Connector */}
             <div
               className="mt-2 h-px bg-white/25"
-              style={{ width: CONNECT, transform: `translateX(${dir * 6}px)` }}
+              style={{
+                width: CONNECT,
+                transform: `translateX(${dir * 6}px)`,
+              }}
             />
 
+            {/* Card */}
             <div
               className="glass-card mt-2 rounded-3xl p-4"
               style={{
-                width: "clamp(260px, 32vw, 420px)",
-                transform: `translateX(${dir * (GAP + CONNECT)}px)`,
+                width: "clamp(260px, 34vw, 440px)",
+                transform: `translateX(${dir * CARD_SHIFT}px)`,
               }}
             >
               <div className="flex items-center gap-3">
@@ -203,8 +173,6 @@ export default function ExperienceModal({ open, onClose, experiences }) {
             exit={{ opacity: 0 }}
           />
 
-          {/* Remove overflow-hidden so roadmap cards don’t get clipped.
-              We'll keep the header clipped, and allow roadmap wrapper to scroll. */}
           <motion.div
             className="relative w-full max-w-[92vw] lg:max-w-[88vw] rounded-3xl glass-modal"
             initial={{ y: 18, scale: 0.985, opacity: 0 }}
@@ -233,8 +201,11 @@ export default function ExperienceModal({ open, onClose, experiences }) {
             <div className="p-4 sm:p-5 grid gap-5">
               <LogoCarousel experiences={experiences} />
 
-              {/* Horizontal scroll enabled to prevent cropping on the left/right */}
-              <div className="overflow-y-auto overflow-x-auto" style={{ maxHeight: "82vh" }}>
+              {/* Vertical scroll for long timeline + horizontal scroll for left/right cards */}
+              <div
+                className="overflow-y-auto overflow-x-auto"
+                style={{ maxHeight: "82vh" }}
+              >
                 <div className="min-w-max px-6">
                   <Roadmap experiences={experiences} />
                 </div>
