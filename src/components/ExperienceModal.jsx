@@ -33,8 +33,9 @@ function Roadmap({ experiences }) {
   const pathRef = useRef(null);
   const [points, setPoints] = useState([]);
 
+  // Tighter vertical rhythm than before to reduce "air" between items
   const H = useMemo(
-    () => Math.max(900, experiences.length * 260) + 260,
+    () => Math.max(760, experiences.length * 200) + 220,
     [experiences.length]
   );
 
@@ -103,13 +104,14 @@ function Roadmap({ experiences }) {
       </svg>
 
       {experiences.map((e, i) => {
-        const p = points[i] || { x: 260, y: 80 + i * 240 };
+        const p = points[i] || { x: 260, y: 80 + i * 210 };
         const leftSide = i % 2 === 0;
 
         const dir = leftSide ? -1 : 1;
-        const CARD_W = 380;
-        const GAP = 14;
-        const CONNECT = 22;
+
+        // Pull cards closer to dots + make width responsive
+        const GAP = 10;
+        const CONNECT = 16;
 
         return (
           <motion.div
@@ -128,13 +130,13 @@ function Roadmap({ experiences }) {
 
             <div
               className="mt-2 h-px bg-white/25"
-              style={{ width: CONNECT, transform: `translateX(${dir * 10}px)` }}
+              style={{ width: CONNECT, transform: `translateX(${dir * 6}px)` }}
             />
 
             <div
               className="glass-card mt-2 rounded-3xl p-4"
               style={{
-                width: CARD_W,
+                width: "clamp(260px, 32vw, 420px)",
                 transform: `translateX(${dir * (GAP + CONNECT)}px)`,
               }}
             >
@@ -194,15 +196,17 @@ export default function ExperienceModal({ open, onClose, experiences }) {
             exit={{ opacity: 0 }}
           />
 
+          {/* Remove overflow-hidden so roadmap cards don’t get clipped.
+              We'll keep the header clipped, and allow roadmap wrapper to scroll. */}
           <motion.div
-            className="relative w-full max-w-7xl rounded-3xl glass-modal overflow-hidden"
+            className="relative w-full max-w-[92vw] lg:max-w-[88vw] rounded-3xl glass-modal"
             initial={{ y: 18, scale: 0.985, opacity: 0 }}
             animate={{ y: 0, scale: 1, opacity: 1 }}
             exit={{ y: 18, scale: 0.985, opacity: 0 }}
             transition={{ type: "spring", stiffness: 420, damping: 36, mass: 0.9 }}
             onMouseDown={(e) => e.stopPropagation()}
           >
-            <div className="flex items-start justify-between gap-4 border-b border-white/10 p-4 sm:p-5">
+            <div className="flex items-start justify-between gap-4 border-b border-white/10 p-4 sm:p-5 overflow-hidden rounded-t-3xl">
               <div>
                 <h3 className="text-lg font-semibold">Work experience roadmap</h3>
                 <p className="mt-1 text-sm text-zinc-200/80">
@@ -222,11 +226,11 @@ export default function ExperienceModal({ open, onClose, experiences }) {
             <div className="p-4 sm:p-5 grid gap-5">
               <LogoCarousel experiences={experiences} />
 
-              <div
-                className="overflow-y-auto overflow-x-visible"
-                style={{ maxHeight: "78vh" }}
-              >
-                <Roadmap experiences={experiences} />
+              {/* Horizontal scroll enabled to prevent cropping on the left/right */}
+              <div className="overflow-y-auto overflow-x-auto" style={{ maxHeight: "82vh" }}>
+                <div className="min-w-max px-6">
+                  <Roadmap experiences={experiences} />
+                </div>
               </div>
             </div>
           </motion.div>
