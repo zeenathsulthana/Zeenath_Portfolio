@@ -5,7 +5,6 @@ import ProjectCard from "./components/ProjectCard.jsx";
 import ProjectModal from "./components/ProjectModal.jsx";
 // import { ProjectModal } from "./components/ProjectModal.jsx";
 import Footer from "./components/Footer.jsx";
-import { projects, experiences } from "./content/portfolio.js";
 import ExperienceCard from "./components/ExperienceCard.jsx";
 import ExperienceModal from "./components/ExperienceModal.jsx";
 
