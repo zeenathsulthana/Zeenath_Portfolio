@@ -32,7 +32,6 @@ export default function App() {
   
   return (
   <div ref={ref} className="min-h-screen glow" style={{ backgroundImage: `url(${bgUrl})` }} >
-    <div ref={ref} className="min-h-screen glow">
       <Navbar />
       <main className="mx-auto max-w-6xl px-5 pb-16">
         <Hero />
@@ -50,23 +49,61 @@ export default function App() {
           </div>
         </section>
 
-        <section id="contact" className="mt-14 rounded-2xl border border-white/10 bg-white/5 p-6">
-          <h3 className="text-lg font-semibold">Contact</h3>
-          <p className="mt-2 text-zinc-300">
-            email: pratik1307xy@gmail.com  
+        <section
+  id="contact"
+  className="mt-14 rounded-2xl border border-white/10 bg-white/5 p-6"
+>
+  <div className="flex items-start justify-between gap-4">
+    <h3 className="text-lg font-semibold">Contact</h3>
 
+    <button
+      type="button"
+      className="rounded-xl border border-white/10 bg-white/10 px-3 py-2 text-sm text-zinc-100 hover:bg-white/15"
+      onClick={async () => {
+        const text =
+          "Email: pratik1307xy@gmail.com\n" +
+          "Mobile: +33 0745755019\n" +
+          "WhatsApp: +91 7358359203";
+        await navigator.clipboard.writeText(text);
+      }}
+    >
+      Copy all
+    </button>
+  </div>
 
-            mobile number: +33 0745755019 
+  <div className="mt-4 grid gap-3 text-zinc-200/90">
+    {[
+      { label: "Email", value: "pratik1307xy@gmail.com" },
+      { label: "Mobile", value: "+33 0745755019" },
+      { label: "WhatsApp", value: "+91 7358359203" },
+    ].map((item) => (
+      <div
+        key={item.label}
+        className="flex flex-wrap items-center justify-between gap-3 rounded-xl border border-white/10 bg-white/5 px-4 py-3"
+      >
+        <div className="text-sm">
+          <span className="text-zinc-400">{item.label}:</span>{" "}
+          <span className="text-zinc-100">{item.value}</span>
+        </div>
 
-            
-            Whatsapp: +91 7358359203
-          </p>
-        </section>
+        <button
+          type="button"
+          className="rounded-xl border border-white/10 bg-white/10 px-3 py-2 text-xs text-zinc-100 hover:bg-white/15"
+          onClick={async () => {
+            await navigator.clipboard.writeText(item.value);
+          }}
+        >
+          Copy
+        </button>
+      </div>
+    ))}
+  </div>
+</section>
+
       </main>
 
       <Footer />
       <ProjectModal project={active} onClose={() => setActive(null)} />
     </div>
-  </div>
   );
 }
