@@ -53,7 +53,9 @@ export default function App() {
         <section id="contact" className="mt-14 rounded-2xl border border-white/10 bg-white/5 p-6">
           <h3 className="text-lg font-semibold">Contact</h3>
           <p className="mt-2 text-zinc-300">
-            If you want the full portfolio pack (all PDFs/videos) as a zip, I can add a download page.
+            email: pratik1307xy@gmail.com
+            mobile number: +33 0745755019
+            Whatsapp: +91 7358359203
           </p>
         </section>
       </main>

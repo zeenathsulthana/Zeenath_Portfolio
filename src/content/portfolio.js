@@ -7,8 +7,7 @@ export const profile = {
   blurb:
     "I build strategy + storytelling backed by research. Here are a few projects, decks, and videos to understand me better!",
   links: [
-    { label: "LinkedIn", href: "https://www.linkedin.com/in/pratikddeo/" },
-    { label: "Email", href: "pratik1307xy@gmail.com" },
+    { label: "LinkedIn", href: "https://www.linkedin.com/in/pratikddeo/" }
   ],
 };
 
