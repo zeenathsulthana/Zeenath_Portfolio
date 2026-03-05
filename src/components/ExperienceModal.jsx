@@ -32,33 +32,29 @@ function LogoCarousel({ experiences }) {
 
 function ExperienceRoadmapCard({ e, logoH = 92 }) {
   return (
-    <div className="rounded-3xl p-[1px] bg-gradient-to-b from-amber-200/70 via-amber-400/45 to-amber-700/35">
-      <div className="glass-card rounded-3xl overflow-hidden">
-        <div
-          className="relative border-b border-white/10 bg-white/5"
-          style={{ height: logoH }}
-        >
-          <img
-            src={e.logo}
-            alt={e.company}
-            className="absolute inset-0 h-full w-full object-contain"
-            draggable={false}
-          />
-          <div className="absolute inset-0 bg-gradient-to-b from-black/10 via-black/10 to-black/35" />
-        </div>
+    <div className="glass-card rounded-3xl overflow-hidden border border-white/10">
+      {/* Big logo banner */}
+      <div className="relative border-b border-white/10 bg-white/5" style={{ height: logoH }}>
+        <img
+          src={e.logo}
+          alt={e.company}
+          className="absolute inset-0 h-full w-full object-contain"
+          draggable={false}
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/10 via-black/10 to-black/35" />
+      </div>
 
-        <div className="p-5">
-          <p className="text-base font-semibold leading-tight">{e.role}</p>
-          <p className="text-sm text-zinc-300/80 truncate">{e.company}</p>
+      <div className="p-5">
+        <p className="text-base font-semibold leading-tight">{e.role}</p>
+        <p className="text-sm text-zinc-300/80 truncate">{e.company}</p>
 
-          <p className="mt-2 text-sm text-zinc-300/80">
-            {e.start} – {e.end} • {e.location}
-          </p>
+        <p className="mt-2 text-sm text-zinc-300/80">
+          {e.start} – {e.end} • {e.location}
+        </p>
 
-          <p className="mt-3 text-sm text-zinc-200/85 whitespace-pre-wrap leading-relaxed">
-            {e.description}
-          </p>
-        </div>
+        <p className="mt-3 text-sm text-zinc-200/85 whitespace-pre-wrap leading-relaxed">
+          {e.description}
+        </p>
       </div>
     </div>
   );
@@ -115,10 +111,7 @@ function Roadmap({ experiences }) {
 
   const H = useMemo(() => {
     if (!ys.length) {
-      return Math.max(
-        760,
-        TOP + BOTTOM + experiences.length * (MIN_ROW + ROW_GAP)
-      );
+      return Math.max(760, TOP + BOTTOM + experiences.length * (MIN_ROW + ROW_GAP));
     }
     const lastCenter = ys[ys.length - 1];
     const lastH = Math.max(MIN_ROW, heights[heights.length - 1] || MIN_ROW);
@@ -130,24 +123,6 @@ function Roadmap({ experiences }) {
 
   return (
     <div className="relative mx-auto" style={{ width: W, height: H }}>
-      {/* One simple gold vertical line (not SVG, so it can't “disappear”) */}
-      <div
-        className="absolute top-0 bottom-0 left-1/2 -translate-x-1/2"
-        style={{ top: TOP, bottom: BOTTOM, width: 6, borderRadius: 999 }}
-      >
-        <div
-          className="absolute inset-0"
-          style={{
-            background:
-              "linear-gradient(180deg, rgba(255,230,140,.95), rgba(255,195,80,.92), rgba(175,110,18,.75))",
-            boxShadow:
-              "0 0 18px rgba(255, 200, 90, .25), 0 0 40px rgba(255, 185, 70, .18)",
-            borderRadius: 999,
-          }}
-        />
-      </div>
-
-      {/* Cards: strict alternating left/right */}
       {experiences.map((e, i) => {
         const y = ys[i] ?? TOP + i * (MIN_ROW + ROW_GAP);
         const leftSide = i % 2 === 0;
@@ -168,9 +143,7 @@ function Roadmap({ experiences }) {
                 width: CARD_W,
                 top: y,
                 left: leftSide ? xLeftAnchor : xRightAnchor,
-                transform: leftSide
-                  ? "translate(0%, -50%)"
-                  : "translate(-100%, -50%)",
+                transform: leftSide ? "translate(0%, -50%)" : "translate(-100%, -50%)",
               }}
             >
               <ExperienceRoadmapCard e={e} logoH={LOGO_H} />
