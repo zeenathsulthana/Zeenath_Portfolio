@@ -52,3 +52,57 @@ export const projects = [
     },
   },
 ];
+
+export const experiences = [
+  {
+    id: "exp-1",
+    company: "Roquette",
+    logo: `${base}media/images/logo-roquette.webp`,
+    role: "Student Consultant",
+    location: "Lille, FR",
+    start: "Sep 2025",
+    end: "Feb 2026",
+    description: "What you did, impact, tools...",
+  },
+  {
+    id: "exp-2",
+    company: "Appviewx",
+    logo: `${base}media/images/appviewx-companyupdate-1747133054374.webp`,
+    role: "Product Analyst",
+    location: "Lille, FR",
+    start: "Sep 2025",
+    end: "Feb 2026",
+    description: "What you did, impact, tools...",
+  },
+  {
+    id: "exp-3",
+    company: "HCL Tech",
+    logo: `${base}media/images/2022-10-05-095621950-HCL-Technologies-rebrands-as-HCLTech-and-adopts-new-purpose.webp`,
+    role: "Consulting Intern",
+    location: "Lille, FR",
+    start: "Sep 2025",
+    end: "Feb 2026",
+    description: "What you did, impact, tools...",
+  },
+  {
+    id: "exp-4",
+    company: "Google Developers student club",
+    logo: `${base}media/images/Header image 1600x .jpg`,
+    role: "Consulting Intern",
+    location: "Lille, FR",
+    start: "Sep 2025",
+    end: "Feb 2026",
+    description: "What you did, impact, tools...",
+  },
+  {
+    id: "exp-5",
+    company: "Company E",
+    logo: `${base}media/images/Header image 1600x .jpg`,
+    role: "Consulting Intern",
+    location: "Lille, FR",
+    start: "Sep 2025",
+    end: "Feb 2026",
+    description: "What you did, impact, tools...",
+  }
+  // add more...
+];

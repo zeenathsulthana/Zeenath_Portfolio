@@ -6,12 +6,17 @@ import ProjectModal from "./components/ProjectModal.jsx";
 // import { ProjectModal } from "./components/ProjectModal.jsx";
 import Footer from "./components/Footer.jsx";
 import { projects } from "./content/portfolio.js";
+import { projects, experiences } from "./content/portfolio.js";
+import ExperienceCard from "./components/ExperienceCard.jsx";
+import ExperienceModal from "./components/ExperienceModal.jsx";
 
 
 export default function App() {
   const ref = useRef(null);
   const [active, setActive] = useState(null);
   const bgUrl = `${import.meta.env.BASE_URL}media/images/lone-tree-crescent-moon-half-moon-starry-sky-night-lake-3840x3840-7701.jpg`;
+  const [expOpen, setExpOpen] = useState(false);
+
 
   useEffect(() => {
     const el = ref.current;
@@ -48,6 +53,25 @@ export default function App() {
             ))}
           </div>
         </section>
+
+        <section className="mt-14">
+  <div className="flex items-end justify-between gap-6">
+    <h2 className="text-xl font-semibold tracking-tight">Work experience</h2>
+    <p className="text-sm text-zinc-400">Recent 4 • click to open roadmap</p>
+  </div>
+
+  <div className="mt-5 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+    {experiences.slice(0, 4).map((e) => (
+      <ExperienceCard key={e.id} exp={e} onOpen={() => setExpOpen(true)} />
+    ))}
+  </div>
+</section>
+
+<ExperienceModal
+  open={expOpen}
+  onClose={() => setExpOpen(false)}
+  experiences={experiences}
+/>
 
         <section
   id="contact"
