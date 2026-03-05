@@ -53,6 +53,81 @@ export const projects = [
   },
 ];
 
+export const awards = [
+  {
+    id: "award-1",
+    title: "Best Paper Award",
+    issuer: "WASET Conference",
+    year: "2022",
+    thumbnail: `${base}media/images/Screenshot 2026-03-05 233142.png`,
+    summary:
+      "Received the best paper award for research on video quality algorithms presented at an international conference in Greece.",
+    description:
+      "Awarded for primary-author research work on video quality algorithms, recognized for innovation and application relevance.",
+    pdf: `${base}media/pdf/best_presentation_certificate.pdf`,
+  },
+  {
+    id: "award-2",
+    title: "Most valuable Player Quater - 1",
+    issuer: "Appviewx",
+    year: "2024",
+    thumbnail: `${base}media/images/Screenshot 2026-03-05 233142.png`,
+    summary:
+      "Recognized for product ownership, dashboard development, and cross-functional execution.",
+    description:
+      "Acknowledgement for contributions to product operations, stakeholder alignment, and analytics-led delivery improvement.",
+    pdf: `${base}media/pdf/mvp award.pdf`,
+  },
+  {
+    id: "award-3",
+    title: "WASET International research paper presentation",
+    issuer: "WASET Conference",
+    year: "2022",
+    thumbnail: `${base}media/images/best-paper-thumb.jpg`,
+    summary:
+      "Received the best paper award for research on video quality algorithms presented at an international conference in Greece.",
+    description:
+      "Awarded for primary-author research work on video quality algorithms, recognized for innovation and application relevance.",
+    pdf: `${base}media/pdf/presentation_certificate.pdf`,
+  },
+  {
+    id: "award-4",
+    title: "Session co-chair panel",
+    issuer: "WASET Greece, Athens",
+    year: "2024",
+    thumbnail: `${base}media/images/appviewx-award-thumb.jpg`,
+    summary:
+      "Recognized for product ownership, dashboard development, and cross-functional execution.",
+    description:
+      "Acknowledgement for contributions to product operations, stakeholder alignment, and analytics-led delivery improvement.",
+    pdf: `${base}media/pdf/chair_certificate.pdf`,
+  },
+  {
+    id: "award-5",
+    title: "Financial Markets",
+    issuer: "Yale university-Coursera",
+    year: "2022",
+    thumbnail: `${base}media/images/best-paper-thumb.jpg`,
+    summary:
+      "Received the best paper award for research on video quality algorithms presented at an international conference in Greece.",
+    description:
+      "Awarded for primary-author research work on video quality algorithms, recognized for innovation and application relevance.",
+    pdf: `${base}media/pdf/Coursera Y4EMPA8RKAQ2.pdf`,
+  },
+  {
+    id: "award-6",
+    title: "International Business",
+    issuer: "University of Mexico-Coursera",
+    year: "2024",
+    thumbnail: `${base}media/images/appviewx-award-thumb.jpg`,
+    summary:
+      "Recognized for product ownership, dashboard development, and cross-functional execution.",
+    description:
+      "Acknowledgement for contributions to product operations, stakeholder alignment, and analytics-led delivery improvement.",
+    pdf: `${base}media/pdf/Coursera 7JQHXU8Y837T.pdf`,
+  }
+];
+
 export const experiences = [
   {
     id: "exp-1",

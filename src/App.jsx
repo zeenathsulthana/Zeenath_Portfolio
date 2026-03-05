@@ -9,12 +9,18 @@ import { projects, experiences } from "./content/portfolio.js";
 import ExperienceCard from "./components/ExperienceCard.jsx";
 import ExperienceModal from "./components/ExperienceModal.jsx";
 
+import { projects, experiences, awards } from "./content/portfolio.js";
+import AwardCard from "./components/AwardCard.jsx";
+import AwardModal from "./components/AwardModal.jsx";
+
 
 export default function App() {
   const ref = useRef(null);
   const [active, setActive] = useState(null);
   const bgUrl = `${import.meta.env.BASE_URL}media/images/wlp1.jpg`;
   const [expOpen, setExpOpen] = useState(false);
+  const [activeAward, setActiveAward] = useState(null);
+
 
 
   useEffect(() => {
@@ -71,6 +77,25 @@ export default function App() {
   onClose={() => setExpOpen(false)}
   experiences={experiences}
 />
+
+<section className="mt-14">
+  <div className="flex items-end justify-between gap-6">
+    <h2 className="text-xl font-semibold tracking-tight">Awards and achievements</h2>
+    <p className="text-sm text-zinc-400">Certificates, letters and recognitions</p>
+  </div>
+
+  <div className="mt-5 grid grid-cols-1 gap-4 lg:grid-cols-2">
+    {awards.map((a) => (
+      <AwardCard
+        key={a.id}
+        award={a}
+        onOpen={() => setActiveAward(a)}
+      />
+    ))}
+  </div>
+</section>
+
+<AwardModal award={activeAward} onClose={() => setActiveAward(null)} />
 
         <section
   id="contact"
