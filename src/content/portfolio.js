@@ -67,7 +67,7 @@ export const experiences = [
   {
     id: "bcg",
     company: "Inverto",
-    logo: `${base}media/images/inverto.webp`,
+    logo: `${base}media/images/inverto.jpg`,
     role: "Consulting Project",
     location: "France",
     start: "Dec 2025",
