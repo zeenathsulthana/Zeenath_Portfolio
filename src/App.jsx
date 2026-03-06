@@ -29,11 +29,32 @@ export default function App() {
 return (
   <>
     <IntroSplash show={showIntro} />
-    <div ref={ref} className="min-h-screen glow" style={{ backgroundImage: `url(${bgUrl})` }}>
-      {/* rest of app */}
+
+    <div
+      ref={ref}
+      className="relative min-h-screen glow text-zinc-100"
+      style={{ backgroundImage: `url(${bgUrl})` }}
+    >
+      <div className="relative z-10">
+        <Navbar />
+        <main className="mx-auto max-w-6xl px-5 pb-16">
+          <Hero />
+          {/* rest of your sections */}
+        </main>
+        <Footer />
+      </div>
+
+      <ProjectModal project={active} onClose={() => setActive(null)} />
+      <ExperienceModal
+        open={expOpen}
+        onClose={() => setExpOpen(false)}
+        experiences={experiences}
+      />
+      <AwardModal award={activeAward} onClose={() => setActiveAward(null)} />
     </div>
   </>
 );
+
 
   useEffect(() => {
     const el = ref.current;

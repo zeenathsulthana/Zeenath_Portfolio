@@ -46,6 +46,23 @@
   opacity: .55;
 }
 
+.glow {
+  position: relative;
+  min-height: 100vh;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.glow::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.42);
+  pointer-events: none;
+  z-index: 0;
+}
+
 
 .glass-modal {
   border: 1px solid rgba(255,255,255,.16);
