@@ -29,7 +29,7 @@ export const projects = [
     title: "Alchime by YSL",
     year: "2025",
     thumbnail: `${base}media/images/alchime.png`,
-    summary: "The unique scent of connection, that you cant buy.",
+    summary: "The unique scent of connection by YSL. A secret which you cant buy.",
     description: "What if you, your partner, your friend can create something that only both of you know the secret to? We introduce you Alchime by Yves Saint Laurent, a series of perfumes which is engineered specifically in a way that lets you combine any 2 perfumes together, and the result will produce a registered-named 3rd perfume which isnt available in any of the other bottles. Its unique. Its something that only both of you know the secret to!",
     video: {
       youtube:
@@ -85,9 +85,9 @@ export const awards = [
     year: "2022",
     thumbnail: `${base}media/images/presentation.png`,
     summary:
-      "Received the best paper award for research on video quality algorithms presented at an international conference in Greece.",
+      "Primary author of a research paper on assessment of video quality algorithms.",
     description:
-      "Awarded for primary-author research work on video quality algorithms, recognized for innovation and application relevance.",
+      "Presented a research paper in an international research conference at Athens,Greece",
     pdf: `${base}media/pdf/presentation_certificate.pdf`,
   },
   {
@@ -97,9 +97,9 @@ export const awards = [
     year: "2024",
     thumbnail: `${base}media/images/chair.png`,
     summary:
-      "Recognized for product ownership, dashboard development, and cross-functional execution.",
+      "Selected as session co-chair",
     description:
-      "Acknowledgement for contributions to product operations, stakeholder alignment, and analytics-led delivery improvement.",
+      "Co-chair for day 2. Assisted in selecting and grading participants' research papers",
     pdf: `${base}media/pdf/chair_certificate.pdf`,
   },
   {
@@ -109,9 +109,9 @@ export const awards = [
     year: "2022",
     thumbnail: `${base}media/images/yale.png`,
     summary:
-      "Received the best paper award for research on video quality algorithms presented at an international conference in Greece.",
+      "Finacial markets",
     description:
-      "Awarded for primary-author research work on video quality algorithms, recognized for innovation and application relevance.",
+      "Macro and Micro economics, flow of market, trading and valuation.",
     pdf: `${base}media/pdf/Coursera Y4EMPA8RKAQ2.pdf`,
   },
   {
@@ -121,9 +121,9 @@ export const awards = [
     year: "2024",
     thumbnail: `${base}media/images/mexico.png`,
     summary:
-      "Recognized for product ownership, dashboard development, and cross-functional execution.",
+      "Business Modelling",
     description:
-      "Acknowledgement for contributions to product operations, stakeholder alignment, and analytics-led delivery improvement.",
+      "Strategy, Business and management",
     pdf: `${base}media/pdf/Coursera 7JQHXU8Y837T.pdf`,
   }
 ];
