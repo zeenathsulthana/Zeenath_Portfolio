@@ -18,15 +18,11 @@ export default function Navbar() {
               <button
   type="button"
   onClick={() => setAboutOpen(true)}
-  className="rounded-xl px-3 py-2 text-sm font-medium text-zinc-950 transition duration-200
-             bg-gradient-to-r from-amber-300 via-yellow-400 to-amber-500
-             shadow-[0_8px_24px_rgba(245,158,11,0.35)]
-             hover:from-amber-200 hover:via-yellow-300 hover:to-amber-400
-             hover:shadow-[0_10px_28px_rgba(245,158,11,0.45)]
-             active:scale-[0.98]"
+  className="rounded-xl border border-amber-200/15 bg-gradient-to-b from-white/10 via-amber-100/8 to-amber-300/10 px-3 py-2 text-sm font-medium text-amber-100/85 backdrop-blur-md transition duration-200 shadow-[inset_0_1px_0_rgba(255,255,255,0.12),0_8px_20px_rgba(0,0,0,0.18)] hover:border-amber-200/25 hover:from-white/12 hover:via-amber-100/10 hover:to-amber-300/12 hover:text-amber-50"
 >
   Who am I?
 </button>
+
 
 
 
