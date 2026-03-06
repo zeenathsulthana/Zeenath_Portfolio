@@ -18,28 +18,49 @@ export const whoAmI = [
     title: "A strategist, analyst, manager; Wizard in a human form (60% literally) ",
     image: `${base}media/images/moi.jpeg`,
     content:
-      "I enjoy turning messy information into clear strategic narratives. That is why I like consulting, marketing strategy, and research-heavy problem solving."
+      "It was 2019 when I started my bachelors in computer science and engineering. Why? Because everyone said AI is the future, and you gotta be a part of it. So that's what I did. Got deep into AI, started from scratch, the math behind it and what not, then started my career implementing AI based solutions for automobile and medical industry at large scale service based companies. Later I joined a startup, where I got the taste of what actual hustle looks like. At a starup, for the sake of fomality, yes you've got a role: but not really. You are the developer, you are the business analyst, you are the designer and you are the manager. A good Jack-of-all-trades. There I worked with and for the problems of several forture 100 companies and got an indepeth understanding of how these giants work and the problems they usually face. And thats when I finally understood: If you know tech and understand tech, and have good enough creativity and can communicate your thoughts clearly, you gotta become a part of the teams or work with those who control the company's direction, mission and vision. Because thats the kind of people that are needed at the top. Its a gradual process, but every single leader I know or have met, is a jack of all trades. They have almost covered everything in each level and rapidly moved onto higher levels. Thats what I aspire to become: a good Leader. A MASTER JACK OF ALL TRADES"
+  },
+  {
+    id: "about-ai",
+    title: "What do I think about AI?",
+    image: `${base}media/images/CCG.webp`,
+    content:
+      "From 2019 to today (2026), take it from someone who started with AI when there was no chatgpt or any gen-AI, just plain old regression and prediction models, and neural networks; AI has grown exponentially big. Me and my friends would discuss how AI will actually be in the future 5 years, and trust me when I say this: Today's scenario is eerily close to what we imagined/predicted back in 2019. AI has become a part of out daily lives, whether you accept it or not. Even our universities and workplaces are encouraging the use of AI, do you see how sticky it has become? Thats the biggest achievement any product can make, its becoming sticky. Being sticky refers to something becoming a part of so many things an processes that you can no more avoid using it. Its in your life already. I personally believe that AI is a part of our evolution. If you havent noticed it already, out attention span, as well as mental calculation/creativity/inmagination has reduced quite a bit. We often find ourselves offloading a lof of these tasks to AI, you just take your phone out and use your favorite AI's mobile app for almost everything. Am I against it? Nope. But you gotta make sure that with AI, you are better, faster and more productive. So if you are still not there yet, jump onto the train as fast as you can, because everyone else around you are there "
   },
   {
     id: "about-2",
-    title: "What I do outside work",
+    title: "I love Football",
     image: `${base}media/images/rm.jpg`,
     content:
-      "Outside projects and internships, I enjoy exploring brands, following retail trends, and understanding how people connect emotionally with products and experiences."
+      "A madrista forever! A Madrista's jersey can be covered with dirt, sweat, even blood, but it will never be covered with defeat! This team, shaped atleast 30-40% of my personality. Other similarly favoraite teams? Ofc its PSG. Portugal and France. "
   },
   {
     id: "about-3",
-    title: "Sports and competition",
-    image: `${base}media/images/mg.jpg`,
+    title: "F1: Loved Mercedes before they became popular!",
+    image: `${base}media/images/merc.webp`,
     content:
-      "I like sports because they combine discipline, performance, and momentum. They remind me a lot of consulting projects: preparation matters, but execution matters more."
+      "Since childhood, I always loved Mercedes. I remember seeing a mercedes and asking my dad what car it is. He said mercedes. It took the kid me 2 days to learn the pronounciation, and it has been on my mind ever since. My favourite car brand and my favorite F1 team."
   },
   {
     id: "about-4",
-    title: "Cars, design, and aspiration",
+    title: "MUSIC Et EMD",
     image: `${base}media/images/mg.jpg`,
     content:
-      "I am drawn to cars for the same reason I like strong brands: design, personality, and precision. Great products always tell a story before anyone explains them."
+      "For the longest time, I wanted to become a Dj. Heard Martin Garrix in teenages and suddenly had shift in my personality, I still Dj whenver I get the chance to. Favoutite genres? Bass House, Big room, techno. Fav EDM artists: Garrix, Vluarr, Knock2, Illenium,Rezz. Favourite singers/Bands? Evanescence, Linkin Park, Charlie Puth, Ariana Grande, Linkin Park, Paramore, Juice wrld, Mitraz, Maroon5, Yungblub (The list wont ever stop so imma stop here)"
+  },
+  {
+    id: "about-5",
+    title: "GAMING",
+    image: `${base}media/images/pop.webp`,
+    content:
+      "Got my first PC when I was 11 or 12, and yeah some how my very first game was Prince of Persia: Warrior Within and guys, believe me when I say this. NO GAME TILL TODAY'S DATE HAS COME CLOSE TO THE EXPERIENCE THE 11 YEAR OLD ME HAD. Even for todays date, the graphics, the motion physics of this game is insane. Perfectly engineered game, UBISOFT has mastered the art of creating RPG games. Yeah, Fromsoft also has been doing amazing. Loved playing Sekiro: shadows die twice and ofcourse, Elden ring. Cant wait to see what these two companies will bring next!"
+  },
+  {
+    id: "about-6",
+    title: "Anime",
+    image: `${base}media/images/itachi.webp`,
+    content:
+      "I derive the rest of personality from him. Itachi Uchiha. From the anime: Naruto. Anime to me is something very influencial. Trust me when I say this, some of the greates and best people of today's generation draw their motivations from some anime character. This style of visual entertainment has let artists express all the kinds of emotions to the fullest, something you cannot achieve in movies or though disney style animations. My favourites? Naruto, Anohana, jjk,Berserk, Kimi no nawa, Haikyu (List goes on again)"
   }
 ];
 
