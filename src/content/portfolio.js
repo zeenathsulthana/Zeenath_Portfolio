@@ -102,20 +102,9 @@ export const projects = [
     thumbnail: `${base}media/images/reno.png`,
     summary:
       "Analysing finacial viability of Sustainable construction and renovation services.",
-    description: "Renowate is company that offers sustainable renovation and construction services. Methods such as pre-fabrication, digital twins, warehouse decentralization etc help reduce Co2 emissions and also reuse existing materials and components.",
+    description: "Renowate is company that offers sustainable renovation and construction services. Methods such as pre-fabrication, digital twins, warehouse decentralization etc help reduce Co2 emissions and also reuse existing materials and components. This was a team effort for the EDHEC strategic Foresight Hackathon.",
     pdf: `${base}media/pdf/renowate.pdf`,
-  },
-    {
-    id: "Skechers: Active running rebranding",
-    type: "pdf",
-    title: "Skechers: Active running rebranding",
-    year: "2026",
-    thumbnail: `${base}media/images/Screenshot 2026-03-04 230825.png`,
-    summary:
-      "Rebranding Skechers to place it alongside the leaders of active running footwear!",
-    description: "When we hear Skechers, we think comfort and comfortable running. But when active runners hears Skechers, they think of a lazy afternoon run, not their everyday track running. Why? Check out my analysis on this!",
-    pdf: `${base}media/pdf/SKECHERS_ANALYSIS.pdf`,
-  },
+  }
 ];
 
 export const awards = [
