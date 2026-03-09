@@ -54,14 +54,15 @@ export const whoAmI = [
     image: `${base}media/images/pop.webp`,
     content:
       "Got my first PC when I was 11 or 12, and yeah some how my very first game was Prince of Persia: Warrior Within and guys, believe me when I say this. NO GAME TILL TODAY'S DATE HAS COME CLOSE TO THE EXPERIENCE THE 11 YEAR OLD ME HAD. Even for todays date, the graphics, the motion physics of this game is insane. Perfectly engineered game, UBISOFT has mastered the art of creating RPG games. Yeah, Fromsoft also has been doing amazing. Loved playing Sekiro: shadows die twice and ofcourse, Elden ring. Cant wait to see what these two companies will bring next!"
-  },
-  {
-    id: "about-6",
-    title: "Anime",
-    image: `${base}media/images/itachi.webp`,
-    content:
-      "Itachi Uchiha, from Naruto. Everyone needs to know this guy, and countless other characters and stories that you all are probably missing out. This style of visual entertainment has let artists express all the kinds of emotions to the fullest, something you cannot achieve in movies or though disney style animations. My favourites? Naruto, Anohana, jjk,Berserk, Kimi no nawa, Haikyu (List goes on again)"
   }
+  //,
+  // {
+  //   id: "about-6",
+  //   title: "Anime",
+  //   image: `${base}media/images/itachi.webp`,
+  //   content:
+  //     "Itachi Uchiha, from Naruto. Everyone needs to know this guy, and countless other characters and stories that you all are probably missing out. This style of visual entertainment has let artists express all the kinds of emotions to the fullest, something you cannot achieve in movies or though disney style animations. My favourites? Naruto, Anohana, jjk,Berserk, Kimi no nawa, Haikyu (List goes on again)"
+  // }
 ];
 
 
