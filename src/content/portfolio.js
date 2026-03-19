@@ -33,6 +33,14 @@ export const whoAmI = [
     image: `${base}media/images/football.png`,
     content:
       "Football has shaped at least 30-40% of my personality. It has taught me perseverance and discipline: virtues which I believe are insanely important. Just like a lot of other people in the world, football to me is way bigger than just a game. Its an emotion itself. Favorite teams? Real Madrid and PSG, Portugal and France. But hey, every team and every player is amazing."
+  }
+  ,
+  {
+    id: "about-5",
+    title: "GAMING",
+    image: `${base}media/images/pop.webp`,
+    content:
+      "Got my first PC when I was 11 or 12, and yeah some how my very first game was Prince of Persia: Warrior Within and guys, believe me when I say this. NO GAME TILL TODAY'S DATE HAS COME CLOSE TO THE EXPERIENCE THE 11 YEAR OLD ME HAD. Even for todays date, the graphics, the motion physics of this game is insane. Perfectly engineered game, UBISOFT has mastered the art of creating RPG games. Yeah, Fromsoft also has been doing amazing. Loved playing Sekiro: shadows die twice and ofcourse, Elden ring. Cant wait to see what these two companies will bring next!"
   },
   {
     id: "about-3",
@@ -47,13 +55,6 @@ export const whoAmI = [
     image: `${base}media/images/mg.jpg`,
     content:
       "For the longest time, I wanted to become a Dj. Heard Martin Garrix in teenages and suddenly had shift a in my personality, I still Dj whenver I get the chance to. Favourite genres? Bass House, Big room, techno. Fav EDM artists: Garrix, Vluarr, Knock2, Illenium,Rezz. Favourite singers/Bands? Evanescence, Linkin Park, Charlie Puth, Ariana Grande, Motionless in White, Paramore, Juice wrld, Mitraz, Maroon5, Yungblud (The list wont ever stop so imma stop here)"
-  },
-  {
-    id: "about-5",
-    title: "GAMING",
-    image: `${base}media/images/pop.webp`,
-    content:
-      "Got my first PC when I was 11 or 12, and yeah some how my very first game was Prince of Persia: Warrior Within and guys, believe me when I say this. NO GAME TILL TODAY'S DATE HAS COME CLOSE TO THE EXPERIENCE THE 11 YEAR OLD ME HAD. Even for todays date, the graphics, the motion physics of this game is insane. Perfectly engineered game, UBISOFT has mastered the art of creating RPG games. Yeah, Fromsoft also has been doing amazing. Loved playing Sekiro: shadows die twice and ofcourse, Elden ring. Cant wait to see what these two companies will bring next!"
   }
   //,
   // {
