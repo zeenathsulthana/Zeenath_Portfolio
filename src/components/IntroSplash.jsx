@@ -4,7 +4,7 @@ const base = import.meta.env.BASE_URL;
 
 const logos = [
   { name: "Lacoste", src: `${base}media/images/lacoste.png` },
-  { name: "Nespresso", src: `${base}media/images/nestle.png` },
+  { name: "Nespresso", src: `${base}media/images/Nespresso.png` },
   { name: "L'Oréal", src: `${base}media/images/Loreal.jpg` },
   { name: "Carrefour", src: `${base}media/images/carrefour.png` },
   { name: "John Lewis", src: `${base}media/images/John_Lewis_&_Partners.png` },
