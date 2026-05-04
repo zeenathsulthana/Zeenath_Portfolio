@@ -1,70 +1,73 @@
 import { AnimatePresence, motion } from "framer-motion";
 
+const base = import.meta.env.BASE_URL;
+
 const logos = [
-  { name: "Lacoste", src: "/Users/zee/Downloads/my-portfolio/public/media/images/lacoste.png" },
-  { name: "Nespresso", src: "/Users/zee/Downloads/my-portfolio/public/media/images/Nespresso.png" },
-  { name: "L'Oréal", src: "/Users/zee/Downloads/my-portfolio/public/media/images/LOreal-Logo.jpg" },
-  { name: "Carrefour", src: "//Users/zee/Downloads/my-portfolio/public/media/images/carrefour.png" },
-  { name: "John Lewis", src: "/Users/zee/Downloads/my-portfolio/public/media/images/John_Lewis_&_Partners.png" },
-  { name: "Bank of America", src: "/Users/zee/Downloads/my-portfolio/public/media/images/Bank-of-America-logo.png" },
+  { name: "Lacoste", src: `${base}media/images/lacoste.png` },
+  { name: "Nespresso", src: `${base}media/images/nestle.png` },
+  { name: "L'Oréal", src: `${base}media/images/Loreal.jpg` },
+  { name: "Carrefour", src: `${base}media/images/carrefour.png` },
+  { name: "John Lewis", src: `${base}media/images/John_Lewis_&_Partners.png` },
+  { name: "Bank of America", src: `${base}media/images/Bank-of-America-logo.png` },
 ];
 
-const GRID_DURATION = 3.0; // seconds logos stay visible before title fully takes over
+const GRID_PHASE = 1.0; // still controls when text appears
 
 export default function IntroSplash({ show }) {
+  const topLogos = logos.slice(0, 3);
+  const bottomLogos = logos.slice(3, 6);
+
   return (
     <AnimatePresence>
       {show ? (
         <motion.div
           className="fixed inset-0 z-[120] overflow-hidden bg-gradient-to-br from-zinc-50 via-white to-zinc-100"
           initial={{ opacity: 1 }}
-          exit={{ opacity: 0, transition: { duration: 1.8, ease: "easeInOut" } }}
+          exit={{ opacity: 0, transition: { duration: 1.2, ease: "easeInOut" } }}
         >
-          {/* Soft vignette for premium feel */}
+          {/* subtle vignette */}
           <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(0,0,0,0.06),transparent_60%)]" />
 
-          {/* Phase 1: brand logo grid */}
+          {/* TOP ROW LOGOS */}
           <motion.div
-            className="absolute inset-0 flex items-center justify-center px-6"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
+            className="pointer-events-none absolute left-0 right-0 top-[14%] flex items-center justify-center px-6"
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0 }}
-            transition={{
-              opacity: { duration: 0.8, ease: "easeOut" },
-            }}
+            transition={{ duration: 0.4, ease: "easeOut" }}
           >
             <motion.div
-              className="grid max-w-4xl grid-cols-2 gap-8 sm:grid-cols-3 md:gap-10"
+              className="grid w-full max-w-5xl grid-cols-3 gap-4 md:gap-8"
               initial="hidden"
               animate="visible"
               variants={{
                 hidden: {},
                 visible: {
                   transition: {
-                    staggerChildren: 0.12,
-                    delayChildren: 0.2,
+                    staggerChildren: 0.06,
+                    delayChildren: 0.1,
                   },
                 },
               }}
             >
-              {logos.map((logo, index) => (
+              {topLogos.map((logo, index) => (
                 <motion.div
                   key={logo.name}
-                  className="flex items-center justify-center rounded-xl bg-white/70 px-4 py-3 shadow-sm backdrop-blur-sm"
+                  className="flex h-24 items-center justify-center rounded-2xl bg-white/80 px-4 shadow-md backdrop-blur"
                   variants={{
                     hidden: { opacity: 0, scale: 0.9, y: 12 },
                     visible: {
                       opacity: 1,
                       scale: 1,
                       y: 0,
-                      transition: { duration: 0.5, ease: "easeOut" },
+                      transition: { duration: 0.35, ease: "easeOut" },
                     },
                   }}
                   animate={{
-                    // subtle floating motion
-                    y: [0, -4, 0],
+                    y: [0, -3, 0],
+                    opacity: [1, 0.96, 1],
                     transition: {
-                      duration: 4 + index * 0.2,
+                      duration: 2.5 + index * 0.1,
                       repeat: Infinity,
                       repeatType: "reverse",
                       ease: "easeInOut",
@@ -74,69 +77,117 @@ export default function IntroSplash({ show }) {
                   <img
                     src={logo.src}
                     alt={logo.name}
-                    className="max-h-10 object-contain opacity-90"
+                    className="max-h-14 w-auto object-contain"
                   />
                 </motion.div>
               ))}
             </motion.div>
           </motion.div>
 
-          {/* Overlay to fade / blur grid before title takes over */}
+          {/* BOTTOM ROW LOGOS */}
           <motion.div
-            className="pointer-events-none absolute inset-0 bg-white/0 backdrop-blur-0"
-            initial={{ opacity: 0 }}
-            animate={{
-              opacity: 1,
-              backgroundColor: "rgba(255,255,255,0.86)",
-            }}
-            transition={{
-              delay: GRID_DURATION - 1.2,
-              duration: 1.2,
-              ease: "easeInOut",
-            }}
-          />
+            className="pointer-events-none absolute left-0 right-0 bottom-[14%] flex items-center justify-center px-6"
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.4, ease: "easeOut" }}
+          >
+            <motion.div
+              className="grid w-full max-w-5xl grid-cols-3 gap-4 md:gap-8"
+              initial="hidden"
+              animate="visible"
+              variants={{
+                hidden: {},
+                visible: {
+                  transition: {
+                    staggerChildren: 0.06,
+                    delayChildren: 0.1,
+                  },
+                },
+              }}
+            >
+              {bottomLogos.map((logo, index) => (
+                <motion.div
+                  key={logo.name}
+                  className="flex h-24 items-center justify-center rounded-2xl bg-white/80 px-4 shadow-md backdrop-blur"
+                  variants={{
+                    hidden: { opacity: 0, scale: 0.9, y: 12 },
+                    visible: {
+                      opacity: 1,
+                      scale: 1,
+                      y: 0,
+                      transition: { duration: 0.35, ease: "easeOut" },
+                    },
+                  }}
+                  animate={{
+                    y: [0, 3, 0],
+                    opacity: [1, 0.96, 1],
+                    transition: {
+                      duration: 2.5 + index * 0.1,
+                      repeat: Infinity,
+                      repeatType: "reverse",
+                      ease: "easeInOut",
+                    },
+                  }}
+                >
+                  <img
+                    src={logo.src}
+                    alt={logo.name}
+                    className="max-h-14 w-auto object-contain"
+                  />
+                </motion.div>
+              ))}
+            </motion.div>
+          </motion.div>
 
-          {/* Phase 2: personal title reveal */}
+          {/* CENTER TEXT ONLY, logos stay visible behind */}
           <div className="absolute inset-0 flex items-center justify-center px-6 text-center">
             <motion.div
-              initial={{ opacity: 0, y: 18 }}
+              initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: GRID_DURATION, duration: 0.7, ease: "easeOut" }}
+              transition={{
+                delay: GRID_PHASE + 0.1,
+                duration: 0.6,
+                ease: "easeOut",
+              }}
             >
               <motion.p
                 className="text-[11px] uppercase tracking-[0.35em] text-zinc-500"
-                initial={{ opacity: 0, y: 10 }}
+                initial={{ opacity: 0, y: 6 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: GRID_DURATION + 0.1, duration: 0.5 }}
+                transition={{
+                  delay: GRID_PHASE + 0.15,
+                  duration: 0.4,
+                  ease: "easeOut",
+                }}
               >
-                Portfolio of
+                Welcome to
               </motion.p>
 
               <motion.h1
-                className="mt-4 text-4xl font-semibold tracking-tight text-zinc-900 sm:text-5xl md:text-6xl"
-                initial={{ opacity: 0, y: 10 }}
+                className="mt-3 text-4xl font-semibold tracking-tight text-zinc-900 sm:text-5xl md:text-6xl"
+                initial={{ opacity: 0, y: 6 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: GRID_DURATION + 0.25, duration: 0.6 }}
+                transition={{
+                  delay: GRID_PHASE + 0.25,
+                  duration: 0.5,
+                  ease: "easeOut",
+                }}
               >
-                Zeenath
+                My Portfolio
               </motion.h1>
 
               <motion.p
                 className="mt-3 text-sm font-medium uppercase tracking-[0.2em] text-zinc-600 sm:text-xs"
-                initial={{ opacity: 0, y: 8 }}
+                initial={{ opacity: 0, y: 4 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: GRID_DURATION + 0.45, duration: 0.55 }}
+                transition={{
+                  delay: GRID_PHASE + 0.4,
+                  duration: 0.45,
+                  ease: "easeOut",
+                }}
               >
-                Marketing Analyst & Strategist
-              </motion.p>
-
-              <motion.p
-                className="mx-auto mt-4 max-w-xl text-sm text-zinc-600 sm:text-base"
-                initial={{ opacity: 0, y: 6 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: GRID_DURATION + 0.65, duration: 0.6 }}
-              >
-                Global brand experience, data-driven storytelling, and thoughtful marketing strategy—brought together in one portfolio.
+                Marketing Analyst &amp; Strategist
               </motion.p>
             </motion.div>
           </div>

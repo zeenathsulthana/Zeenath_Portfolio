@@ -3,7 +3,7 @@ const base = import.meta.env.BASE_URL;
 export const profile = {
   name: "C'est Moi!",
   title: "Zeenath Sulthana Sivakumar",
-  location: "Marketing | Strategy | Consulting Portfolio",
+  location: "Marketing | Brand Management | Storytelling Portfolio",
   blurb:
     "I enjoy figuring out why things work and why they don’t. With a background in technology and a growing focus on marketing and strategy, I like building ideas that sit at the intersection of data, creativity, and real business impact. This space is a collection of my work, thoughts, and experiments. Take a look around!",
     schoolLogo: `${base}media/images/edhec.webp`,
