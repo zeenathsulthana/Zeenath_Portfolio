@@ -2,20 +2,20 @@ const base = import.meta.env.BASE_URL;
 
 export const profile = {
   name: "C'est Moi!",
-  title: "Pratik D Deo",
-  location: "Consulting / Strategy / Marketing - Portfolio",
+  title: "Zeenath Sulthana Sivakumar",
+  location: "Marketing | Strategy | Consulting Portfolio",
   blurb:
-    "I build strategy + storytelling backed by research, data and creativity. Here are a few projects, decks, and videos to understand me better! Contact me if you find me or my work impressive(I know you will).",
+    "I enjoy figuring out why things work — and why they don’t. With a background in tech and a growing focus on marketing and strategy, I like building ideas that sit at the intersection of data, creativity, and real business impact. This space is a collection of my work, thoughts, and experiments. Take a look around!",
     schoolLogo: `${base}media/images/edhec.webp`,
   links: [
-    { label: "LinkedIn", href: "https://www.linkedin.com/in/pratikddeo/" }
+    { label: "LinkedIn", href: "https://www.linkedin.com/in/zeenath-sulthana-sivakumar-72845a171/" }
   ],
 };
 
 export const whoAmI = [
   {
     id: "about-1",
-    title: "A strategist, analyst, manager; Wizard in a human form (60% literally) ",
+    title: "A marketer, analyst, and quiet operator behind the scenes",
     image: `${base}media/images/pp.png`,
     content:
     "It was 2019 when I started my Bachelor.s in Computer Science and Engineering. Why? Because everyone said the same thing: AI is the future, and you have to be a part of it. So that’s exactly what I decided to do. I started from the very basics, learned everything from scratch: the math behind it and other underlying concepts. I eventually started my career implementing AI-based solutions for automotive and medical industries, working with large-scale service-based organizations. As my experience grew, my role evolved beyond pure technical work. I began working on business analysis and helping organizations strategize roadmaps for company-wide AI implementation, particularly within startups. This phase of my career made me fall in love with the management and strategy side of businesses. Working with and for the problems of several Fortune 100 companies gave me a deep understanding of how these giants operate and the complexity behind decision-making at that level. Everything eventually pushed me further in this direction. In 2025, I joined EDHEC Business School to pursue a Master’s in Strategy, Organisation and Consulting. Here I worked with organizations such as BCG Inverto, Capgemini Invent, L’Oréal, and many more, gaining even deeper exposure to strategic problem-solving and high-level business decision-making. After all these experiences and achievements I realised something: If you love your business, understand technology, have enough creativity to imagine possibilities, and can communicate your ideas clearly, then you should be working with, or becoming a part of, the teams that shape a company’s direction, mission, and vision. Because those are the people who truly determine where organizations go. Reaching that level is not something that happens overnight, but every leader I have known or met shares a common trait: they are, in many ways, jack-of-all-trades. They have almost covered everything in each level and rapidly moved onto higher levels. That is what I aspire to become: A good leader. AN EXPERT JACK OF ALL TRADES!" 
