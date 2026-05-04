@@ -1,250 +1,144 @@
 import { AnimatePresence, motion } from "framer-motion";
-import { useEffect, useRef } from "react";
 
-function RibbonCanvas() {
-  const canvasRef = useRef(null);
+const logos = [
+  { name: "Lacoste", src: "/Users/zee/Downloads/my-portfolio/public/media/images/lacoste.png" },
+  { name: "Nespresso", src: "/Users/zee/Downloads/my-portfolio/public/media/images/Nespresso.png" },
+  { name: "L'Oréal", src: "/Users/zee/Downloads/my-portfolio/public/media/images/LOreal-Logo.jpg" },
+  { name: "Carrefour", src: "//Users/zee/Downloads/my-portfolio/public/media/images/carrefour.png" },
+  { name: "John Lewis", src: "/Users/zee/Downloads/my-portfolio/public/media/images/John_Lewis_&_Partners.png" },
+  { name: "Bank of America", src: "/Users/zee/Downloads/my-portfolio/public/media/images/Bank-of-America-logo.png" },
+];
 
-  useEffect(() => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
-    const ctx = canvas.getContext("2d");
-    if (!ctx) return;
-
-    let width = 0;
-    let height = 0;
-    let animationId;
-    const DPR = Math.min(window.devicePixelRatio || 1, 2);
-
-    const prefersReducedMotion = window.matchMedia(
-      "(prefers-reduced-motion: reduce)"
-    ).matches;
-
-    // one ribbon = smooth polyline with wave motion
-    const createRibbon = (baseY, color, amplitudeBase, speedBase) => {
-      const segments = 10; // smooth but not chaotic
-      const points = [];
-
-      // originate from middle-left (slightly off-screen)
-      const startX = -width * 0.2;
-      const offsetY = baseY;
-
-      for (let i = 0; i <= segments; i++) {
-        const t = i / segments;
-        const x = startX + t * width * 1.4;
-        const y = offsetY;
-        points.push({ x, y });
-      }
-
-      return {
-        points,
-        speed: speedBase * (prefersReducedMotion ? 0.6 : 1),
-        amplitude: amplitudeBase * (prefersReducedMotion ? 0.5 : 1),
-        phase: Math.random() * Math.PI * 2,
-        color,
-        thickness: 10,
-      };
-    };
-
-    let ribbons = [];
-
-    const initRibbons = () => {
-      const midY = height / 2;
-      const bandHeight = Math.min(200, height * 0.32);
-      const gap = bandHeight / 6;
-
-      ribbons = [
-        // Pink – data
-        createRibbon(
-          midY - gap,
-          "rgba(255, 120, 180, 0.85)",
-          18,
-          0.9
-        ),
-        // Green – creativity
-        createRibbon(
-          midY,
-          "rgba(140, 225, 170, 0.9)",
-          22,
-          0.85
-        ),
-        // Blue – strategy
-        createRibbon(
-          midY + gap,
-          "rgba(110, 155, 255, 0.9)",
-          15,
-          0.8
-        ),
-      ];
-    };
-
-    const resize = () => {
-      width = window.innerWidth;
-      height = window.innerHeight;
-      canvas.width = width * DPR;
-      canvas.height = height * DPR;
-      canvas.style.width = `${width}px`;
-      canvas.style.height = `${height}px`;
-      ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
-      initRibbons();
-    };
-
-    const render = (t) => {
-      // white background
-      ctx.fillStyle = "#ffffff";
-      ctx.fillRect(0, 0, width, height);
-
-      // subtle horizontal band in the center where ribbons live
-      const bandHeight = Math.min(220, height * 0.35);
-      const bandTop = height / 2 - bandHeight / 2;
-      const bandGradient = ctx.createLinearGradient(
-        0,
-        bandTop,
-        0,
-        bandTop + bandHeight
-      );
-      bandGradient.addColorStop(0, "rgba(245,245,245,0.0)");
-      bandGradient.addColorStop(0.5, "rgba(245,245,245,0.9)");
-      bandGradient.addColorStop(1, "rgba(245,245,245,0.0)");
-      ctx.fillStyle = bandGradient;
-      ctx.fillRect(0, bandTop, width, bandHeight);
-
-      ctx.save();
-      ctx.shadowColor = "rgba(0,0,0,0.10)";
-      ctx.shadowBlur = 16;
-      ctx.shadowOffsetY = 4;
-
-      ribbons.forEach((ribbon, idx) => {
-        const { points, speed, amplitude, phase, color, thickness } = ribbon;
-
-        ctx.beginPath();
-
-        const updatedPoints = [];
-        for (let i = 0; i < points.length; i++) {
-          let { x, y } = points[i];
-
-          // calm left-to-right motion
-          x += speed * (width / 1200); // slight scaling with screen width
-
-          // structured wave, not chaotic
-          const timeFactor = prefersReducedMotion ? t * 0.4 : t;
-          const offset =
-            Math.sin(timeFactor * 0.0013 + phase + i * 0.55 + idx * 0.4) *
-            amplitude;
-          const bandCenter = height / 2;
-          const constrainedY = bandCenter + (y - bandCenter) + offset;
-
-          updatedPoints.push({ x, y: constrainedY });
-        }
-
-        ribbon.points = updatedPoints;
-
-        // recycle ribbon once fully off-screen to the right
-        const lastPoint = ribbon.points[ribbon.points.length - 1];
-        if (lastPoint.x > width + width * 0.3) {
-          const baseY =
-            height / 2 +
-            (idx - 1) * (bandHeight / 6); // keep them in the same central strip
-          ribbons[idx] = createRibbon(
-            baseY,
-            color,
-            amplitude,
-            speed
-          );
-          return;
-        }
-
-        // soft gradient stroke along the ribbon
-        const first = ribbon.points[0];
-        const last = ribbon.points[ribbon.points.length - 1];
-        const gradient = ctx.createLinearGradient(
-          first.x,
-          first.y,
-          last.x,
-          last.y
-        );
-        gradient.addColorStop(0, color.replace("0.9", "0.0").replace("0.85", "0.0"));
-        gradient.addColorStop(0.3, color);
-        gradient.addColorStop(0.7, color);
-        gradient.addColorStop(1, color.replace("0.9", "0.0").replace("0.85", "0.0"));
-
-        ctx.lineWidth = thickness;
-        ctx.strokeStyle = gradient;
-        ctx.lineCap = "round";
-        ctx.lineJoin = "round";
-
-        ctx.moveTo(first.x, first.y);
-        for (let i = 1; i < ribbon.points.length - 1; i++) {
-          const p0 = ribbon.points[i];
-          const p1 = ribbon.points[i + 1];
-          const cx = (p0.x + p1.x) / 2;
-          const cy = (p0.y + p1.y) / 2;
-          ctx.quadraticCurveTo(p0.x, p0.y, cx, cy);
-        }
-
-        ctx.stroke();
-      });
-
-      ctx.restore();
-
-      animationId = requestAnimationFrame(render);
-    };
-
-    resize();
-    window.addEventListener("resize", resize);
-    animationId = requestAnimationFrame(render);
-
-    return () => {
-      cancelAnimationFrame(animationId);
-      window.removeEventListener("resize", resize);
-    };
-  }, []);
-
-  return <canvas ref={canvasRef} className="absolute inset-0 h-full w-full" />;
-}
+const GRID_DURATION = 3.0; // seconds logos stay visible before title fully takes over
 
 export default function IntroSplash({ show }) {
   return (
     <AnimatePresence>
       {show ? (
         <motion.div
-          className="fixed inset-0 z-[120] overflow-hidden bg-white"
+          className="fixed inset-0 z-[120] overflow-hidden bg-gradient-to-br from-zinc-50 via-white to-zinc-100"
           initial={{ opacity: 1 }}
-          exit={{ opacity: 0, transition: { duration: 2.0, ease: "easeInOut" } }}
+          exit={{ opacity: 0, transition: { duration: 1.8, ease: "easeInOut" } }}
         >
-          <RibbonCanvas />
-
           {/* Soft vignette for premium feel */}
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(0,0,0,0.04),transparent_60%)]" />
+          <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(0,0,0,0.06),transparent_60%)]" />
 
+          {/* Phase 1: brand logo grid */}
+          <motion.div
+            className="absolute inset-0 flex items-center justify-center px-6"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{
+              opacity: { duration: 0.8, ease: "easeOut" },
+            }}
+          >
+            <motion.div
+              className="grid max-w-4xl grid-cols-2 gap-8 sm:grid-cols-3 md:gap-10"
+              initial="hidden"
+              animate="visible"
+              variants={{
+                hidden: {},
+                visible: {
+                  transition: {
+                    staggerChildren: 0.12,
+                    delayChildren: 0.2,
+                  },
+                },
+              }}
+            >
+              {logos.map((logo, index) => (
+                <motion.div
+                  key={logo.name}
+                  className="flex items-center justify-center rounded-xl bg-white/70 px-4 py-3 shadow-sm backdrop-blur-sm"
+                  variants={{
+                    hidden: { opacity: 0, scale: 0.9, y: 12 },
+                    visible: {
+                      opacity: 1,
+                      scale: 1,
+                      y: 0,
+                      transition: { duration: 0.5, ease: "easeOut" },
+                    },
+                  }}
+                  animate={{
+                    // subtle floating motion
+                    y: [0, -4, 0],
+                    transition: {
+                      duration: 4 + index * 0.2,
+                      repeat: Infinity,
+                      repeatType: "reverse",
+                      ease: "easeInOut",
+                    },
+                  }}
+                >
+                  <img
+                    src={logo.src}
+                    alt={logo.name}
+                    className="max-h-10 object-contain opacity-90"
+                  />
+                </motion.div>
+              ))}
+            </motion.div>
+          </motion.div>
+
+          {/* Overlay to fade / blur grid before title takes over */}
+          <motion.div
+            className="pointer-events-none absolute inset-0 bg-white/0 backdrop-blur-0"
+            initial={{ opacity: 0 }}
+            animate={{
+              opacity: 1,
+              backgroundColor: "rgba(255,255,255,0.86)",
+            }}
+            transition={{
+              delay: GRID_DURATION - 1.2,
+              duration: 1.2,
+              ease: "easeInOut",
+            }}
+          />
+
+          {/* Phase 2: personal title reveal */}
           <div className="absolute inset-0 flex items-center justify-center px-6 text-center">
-            <div>
+            <motion.div
+              initial={{ opacity: 0, y: 18 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: GRID_DURATION, duration: 0.7, ease: "easeOut" }}
+            >
               <motion.p
-                className="text-[11px] uppercase tracking-[0.45em] text-zinc-500"
-                initial={{ opacity: 0, y: 14 }}
+                className="text-[11px] uppercase tracking-[0.35em] text-zinc-500"
+                initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.55, duration: 0.45 }}
+                transition={{ delay: GRID_DURATION + 0.1, duration: 0.5 }}
               >
-                Welcome to
+                Portfolio of
               </motion.p>
 
               <motion.h1
-                className="mt-4 text-4xl font-semibold tracking-tight text-zinc-900 sm:text-6xl"
-                initial={{ opacity: 0, y: 18 }}
+                className="mt-4 text-4xl font-semibold tracking-tight text-zinc-900 sm:text-5xl md:text-6xl"
+                initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.8, duration: 0.55 }}
+                transition={{ delay: GRID_DURATION + 0.25, duration: 0.6 }}
               >
-                My Portfolio
+                Zeenath
               </motion.h1>
 
               <motion.p
-                className="mx-auto mt-4 max-w-2xl text-sm text-zinc-700 sm:text-base"
-                initial={{ opacity: 0, y: 14 }}
+                className="mt-3 text-sm font-medium uppercase tracking-[0.2em] text-zinc-600 sm:text-xs"
+                initial={{ opacity: 0, y: 8 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 1.02, duration: 0.5 }}
+                transition={{ delay: GRID_DURATION + 0.45, duration: 0.55 }}
               >
-                Marketing, storytelling, and data flowing into one narrative.
+                Marketing Analyst & Strategist
               </motion.p>
-            </div>
+
+              <motion.p
+                className="mx-auto mt-4 max-w-xl text-sm text-zinc-600 sm:text-base"
+                initial={{ opacity: 0, y: 6 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: GRID_DURATION + 0.65, duration: 0.6 }}
+              >
+                Global brand experience, data-driven storytelling, and thoughtful marketing strategy—brought together in one portfolio.
+              </motion.p>
+            </motion.div>
           </div>
         </motion.div>
       ) : null}
