@@ -15,11 +15,16 @@ function RibbonCanvas() {
     let animationId;
     const DPR = Math.min(window.devicePixelRatio || 1, 2);
 
-    const createRibbon = (baseY, color) => {
-      const segments = 8;
+    const prefersReducedMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)"
+    ).matches;
+
+    // one ribbon = smooth polyline with wave motion
+    const createRibbon = (baseY, color, amplitudeBase, speedBase) => {
+      const segments = 10; // smooth but not chaotic
       const points = [];
 
-      // Start from middle-left area
+      // originate from middle-left (slightly off-screen)
       const startX = -width * 0.2;
       const offsetY = baseY;
 
@@ -32,11 +37,11 @@ function RibbonCanvas() {
 
       return {
         points,
-        speed: 0.8 + Math.random() * 0.6,
-        amplitude: 16 + Math.random() * 10,
+        speed: speedBase * (prefersReducedMotion ? 0.6 : 1),
+        amplitude: amplitudeBase * (prefersReducedMotion ? 0.5 : 1),
         phase: Math.random() * Math.PI * 2,
         color,
-        thickness: 8 + Math.random() * 4,
+        thickness: 10,
       };
     };
 
@@ -44,12 +49,31 @@ function RibbonCanvas() {
 
     const initRibbons = () => {
       const midY = height / 2;
-      const gap = 40;
+      const bandHeight = Math.min(200, height * 0.32);
+      const gap = bandHeight / 6;
 
       ribbons = [
-        createRibbon(midY - gap, "rgba(255, 105, 180, 0.7)"), // pink
-        createRibbon(midY, "rgba(144, 238, 144, 0.7)"),       // green
-        createRibbon(midY + gap, "rgba(135, 206, 250, 0.7)"), // blue
+        // Pink – data
+        createRibbon(
+          midY - gap,
+          "rgba(255, 120, 180, 0.85)",
+          18,
+          0.9
+        ),
+        // Green – creativity
+        createRibbon(
+          midY,
+          "rgba(140, 225, 170, 0.9)",
+          22,
+          0.85
+        ),
+        // Blue – strategy
+        createRibbon(
+          midY + gap,
+          "rgba(110, 155, 255, 0.9)",
+          15,
+          0.8
+        ),
       ];
     };
 
@@ -65,52 +89,90 @@ function RibbonCanvas() {
     };
 
     const render = (t) => {
-      // White background
+      // white background
       ctx.fillStyle = "#ffffff";
       ctx.fillRect(0, 0, width, height);
+
+      // subtle horizontal band in the center where ribbons live
+      const bandHeight = Math.min(220, height * 0.35);
+      const bandTop = height / 2 - bandHeight / 2;
+      const bandGradient = ctx.createLinearGradient(
+        0,
+        bandTop,
+        0,
+        bandTop + bandHeight
+      );
+      bandGradient.addColorStop(0, "rgba(245,245,245,0.0)");
+      bandGradient.addColorStop(0.5, "rgba(245,245,245,0.9)");
+      bandGradient.addColorStop(1, "rgba(245,245,245,0.0)");
+      ctx.fillStyle = bandGradient;
+      ctx.fillRect(0, bandTop, width, bandHeight);
+
+      ctx.save();
+      ctx.shadowColor = "rgba(0,0,0,0.10)";
+      ctx.shadowBlur = 16;
+      ctx.shadowOffsetY = 4;
 
       ribbons.forEach((ribbon, idx) => {
         const { points, speed, amplitude, phase, color, thickness } = ribbon;
 
-        ctx.save();
         ctx.beginPath();
 
         const updatedPoints = [];
-
         for (let i = 0; i < points.length; i++) {
           let { x, y } = points[i];
 
-          // Move horizontally
-          x += speed;
+          // calm left-to-right motion
+          x += speed * (width / 1200); // slight scaling with screen width
 
-          // Apply vertical wave
+          // structured wave, not chaotic
+          const timeFactor = prefersReducedMotion ? t * 0.4 : t;
           const offset =
-            Math.sin(t * 0.0015 + phase + i * 0.5 + idx * 0.8) * amplitude;
-          y = y + offset;
+            Math.sin(timeFactor * 0.0013 + phase + i * 0.55 + idx * 0.4) *
+            amplitude;
+          const bandCenter = height / 2;
+          const constrainedY = bandCenter + (y - bandCenter) + offset;
 
-          updatedPoints.push({ x, y });
+          updatedPoints.push({ x, y: constrainedY });
         }
 
         ribbon.points = updatedPoints;
 
-        // If ribbon moved fully off-screen to the right, recreate it
+        // recycle ribbon once fully off-screen to the right
         const lastPoint = ribbon.points[ribbon.points.length - 1];
         if (lastPoint.x > width + width * 0.3) {
-          const baseY = height / 2 + (idx - 1) * 40;
-          ribbons[idx] = createRibbon(baseY, color);
-          ctx.restore();
+          const baseY =
+            height / 2 +
+            (idx - 1) * (bandHeight / 6); // keep them in the same central strip
+          ribbons[idx] = createRibbon(
+            baseY,
+            color,
+            amplitude,
+            speed
+          );
           return;
         }
 
-        // Draw smooth ribbon (quadratic curves)
+        // soft gradient stroke along the ribbon
+        const first = ribbon.points[0];
+        const last = ribbon.points[ribbon.points.length - 1];
+        const gradient = ctx.createLinearGradient(
+          first.x,
+          first.y,
+          last.x,
+          last.y
+        );
+        gradient.addColorStop(0, color.replace("0.9", "0.0").replace("0.85", "0.0"));
+        gradient.addColorStop(0.3, color);
+        gradient.addColorStop(0.7, color);
+        gradient.addColorStop(1, color.replace("0.9", "0.0").replace("0.85", "0.0"));
+
         ctx.lineWidth = thickness;
-        ctx.strokeStyle = color;
+        ctx.strokeStyle = gradient;
         ctx.lineCap = "round";
         ctx.lineJoin = "round";
 
-        const first = ribbon.points[0];
         ctx.moveTo(first.x, first.y);
-
         for (let i = 1; i < ribbon.points.length - 1; i++) {
           const p0 = ribbon.points[i];
           const p1 = ribbon.points[i + 1];
@@ -120,8 +182,9 @@ function RibbonCanvas() {
         }
 
         ctx.stroke();
-        ctx.restore();
       });
+
+      ctx.restore();
 
       animationId = requestAnimationFrame(render);
     };
@@ -150,16 +213,16 @@ export default function IntroSplash({ show }) {
         >
           <RibbonCanvas />
 
-          {/* Subtle center glow */}
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.4),transparent_55%)]" />
+          {/* Soft vignette for premium feel */}
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(0,0,0,0.04),transparent_60%)]" />
 
           <div className="absolute inset-0 flex items-center justify-center px-6 text-center">
             <div>
               <motion.p
-                className="text-[11px] uppercase tracking-[0.45em] text-pink-500/70"
+                className="text-[11px] uppercase tracking-[0.45em] text-zinc-500"
                 initial={{ opacity: 0, y: 14 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.4, duration: 0.45 }}
+                transition={{ delay: 0.55, duration: 0.45 }}
               >
                 Welcome to
               </motion.p>
@@ -168,7 +231,7 @@ export default function IntroSplash({ show }) {
                 className="mt-4 text-4xl font-semibold tracking-tight text-zinc-900 sm:text-6xl"
                 initial={{ opacity: 0, y: 18 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.65, duration: 0.55 }}
+                transition={{ delay: 0.8, duration: 0.55 }}
               >
                 My Portfolio
               </motion.h1>
@@ -177,9 +240,9 @@ export default function IntroSplash({ show }) {
                 className="mx-auto mt-4 max-w-2xl text-sm text-zinc-700 sm:text-base"
                 initial={{ opacity: 0, y: 14 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.9, duration: 0.5 }}
+                transition={{ delay: 1.02, duration: 0.5 }}
               >
-                Strategy, storytelling, and research in motion.
+                Marketing, storytelling, and data flowing into one narrative.
               </motion.p>
             </div>
           </div>
