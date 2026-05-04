@@ -22,7 +22,7 @@ export default function App() {
   const contactRef = useRef(null);
 
   const [active, setActive] = useState(null);
-  const bgUrl = `${import.meta.env.BASE_URL}media/images/wlp1.jpg`;
+  const bgUrl = `${import.meta.env.BASE_URL}media/images/bg2.png`;
   const [expOpen, setExpOpen] = useState(false);
   const [activeAward, setActiveAward] = useState(null);
   const [showIntro, setShowIntro] = useState(true);

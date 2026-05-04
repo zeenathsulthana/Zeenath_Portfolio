@@ -2,21 +2,57 @@ import { AnimatePresence, motion } from "framer-motion";
 
 const base = import.meta.env.BASE_URL;
 
+// Positions are carefully chosen so nothing overlaps the center text
 const logos = [
-  { name: "Lacoste", src: `${base}media/images/lacoste.png` },
-  { name: "Nespresso", src: `${base}media/images/Nespresso.png` },
-  { name: "L'Oréal", src: `${base}media/images/Loreal.jpg` },
-  { name: "Carrefour", src: `${base}media/images/carrefour.png` },
-  { name: "John Lewis", src: `${base}media/images/John_Lewis_&_Partners.png` },
-  { name: "Bank of America", src: `${base}media/images/Bank-of-America-logo.png` },
+  // top band (left -> right)
+  {
+    name: "World Retail Congress",
+    src: `${base}media/images/wrc.png`,
+    className: "top-[10%] left-[8%]",
+  },
+  {
+    name: "Nespresso",
+    src: `${base}media/images/Nespresso.png`,
+    className: "bottom-[10%] right-[9%]",
+  
+  },
+  {
+    name: "L'Oréal",
+    src: `${base}media/images/Loreal.jpg`,
+    className: "top-[10%] right-[10%]",
+  },
+  {
+    name: "Yves Saint Laurent",
+    src: `${base}media/images/ysl.png`,
+    className: "top-[22%] right-[30%]",
+  },
+
+  // bottom band (left -> right)
+  {
+    name: "Carrefour",
+    src: `${base}media/images/carrefour.png`,
+    className: "bottom-[18%] left-[12%]",
+  },
+  {
+    name: "John Lewis",
+    src: `${base}media/images/John_Lewis_&_Partners.png`,
+    className: "bottom-[10%] left-[34%]",
+  },
+  {
+    name: "Bank of America",
+    src: `${base}media/images/Bank-of-America-logo.png`,
+      className: "top-[16%] left-[31%]",
+  },
+  {
+    name: "Lacoste",
+    src: `${base}media/images/lacoste.png`,
+    className: "bottom-[20%] right-[28%]",
+  },
 ];
 
-const GRID_PHASE = 1.0; // still controls when text appears
+const TEXT_DELAY = 1.0;
 
 export default function IntroSplash({ show }) {
-  const topLogos = logos.slice(0, 3);
-  const bottomLogos = logos.slice(3, 6);
-
   return (
     <AnimatePresence>
       {show ? (
@@ -28,125 +64,54 @@ export default function IntroSplash({ show }) {
           {/* subtle vignette */}
           <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(0,0,0,0.06),transparent_60%)]" />
 
-          {/* TOP ROW LOGOS */}
-          <motion.div
-            className="pointer-events-none absolute left-0 right-0 top-[14%] flex items-center justify-center px-6"
-            initial={{ opacity: 0, y: -10 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.4, ease: "easeOut" }}
-          >
+          {/* SCATTERED BUT BALANCED LOGOS */}
+          {logos.map((logo, index) => (
             <motion.div
-              className="grid w-full max-w-5xl grid-cols-3 gap-4 md:gap-8"
-              initial="hidden"
-              animate="visible"
-              variants={{
-                hidden: {},
-                visible: {
-                  transition: {
-                    staggerChildren: 0.06,
-                    delayChildren: 0.1,
-                  },
-                },
+              key={logo.name}
+              className={`pointer-events-none absolute flex items-center justify-center ${logo.className}`}
+              initial={{ opacity: 0, scale: 0.9, y: 10 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              transition={{
+                delay: 0.15 + index * 0.07,
+                duration: 0.6,
+                ease: "easeOut",
               }}
             >
-              {topLogos.map((logo, index) => (
-                <motion.div
-                  key={logo.name}
-                  className="flex h-24 items-center justify-center rounded-2xl bg-white/80 px-4 shadow-md backdrop-blur"
-                  variants={{
-                    hidden: { opacity: 0, scale: 0.9, y: 12 },
-                    visible: {
-                      opacity: 1,
-                      scale: 1,
-                      y: 0,
-                      transition: { duration: 0.35, ease: "easeOut" },
-                    },
-                  }}
-                  animate={{
-                    y: [0, -3, 0],
-                    opacity: [1, 0.96, 1],
-                    transition: {
-                      duration: 2.5 + index * 0.1,
-                      repeat: Infinity,
-                      repeatType: "reverse",
-                      ease: "easeInOut",
-                    },
-                  }}
-                >
-                  <img
-                    src={logo.src}
-                    alt={logo.name}
-                    className="max-h-14 w-auto object-contain"
-                  />
-                </motion.div>
-              ))}
+              <motion.div
+                className="flex h-32 w-[230px] items-center justify-center rounded-3xl bg-white/85 px-6 shadow-md backdrop-blur"
+                animate={{
+                  y: [0, -3, 0],
+                  opacity: [1, 0.97, 1],
+                }}
+                transition={{
+                  duration: 3 + index * 0.2,
+                  repeat: Infinity,
+                  repeatType: "reverse",
+                  ease: "easeInOut",
+                }}
+              >
+                <img
+                  src={logo.src}
+                  alt={logo.name}
+                  className={`object-contain ${
+                    logo.name === "Nespresso"
+                      ? "max-h-18 max-w-[120px]"
+                      : logo.name === "Carrefour"
+                      ? "max-h-18 max-w-[130px]"
+                      : "max-h-18 max-w-[180px]"
+                  }`}
+                />
+              </motion.div>
             </motion.div>
-          </motion.div>
+          ))}
 
-          {/* BOTTOM ROW LOGOS */}
-          <motion.div
-            className="pointer-events-none absolute left-0 right-0 bottom-[14%] flex items-center justify-center px-6"
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.4, ease: "easeOut" }}
-          >
-            <motion.div
-              className="grid w-full max-w-5xl grid-cols-3 gap-4 md:gap-8"
-              initial="hidden"
-              animate="visible"
-              variants={{
-                hidden: {},
-                visible: {
-                  transition: {
-                    staggerChildren: 0.06,
-                    delayChildren: 0.1,
-                  },
-                },
-              }}
-            >
-              {bottomLogos.map((logo, index) => (
-                <motion.div
-                  key={logo.name}
-                  className="flex h-24 items-center justify-center rounded-2xl bg-white/80 px-4 shadow-md backdrop-blur"
-                  variants={{
-                    hidden: { opacity: 0, scale: 0.9, y: 12 },
-                    visible: {
-                      opacity: 1,
-                      scale: 1,
-                      y: 0,
-                      transition: { duration: 0.35, ease: "easeOut" },
-                    },
-                  }}
-                  animate={{
-                    y: [0, 3, 0],
-                    opacity: [1, 0.96, 1],
-                    transition: {
-                      duration: 2.5 + index * 0.1,
-                      repeat: Infinity,
-                      repeatType: "reverse",
-                      ease: "easeInOut",
-                    },
-                  }}
-                >
-                  <img
-                    src={logo.src}
-                    alt={logo.name}
-                    className="max-h-14 w-auto object-contain"
-                  />
-                </motion.div>
-              ))}
-            </motion.div>
-          </motion.div>
-
-          {/* CENTER TEXT ONLY, logos stay visible behind */}
+          {/* CENTER TEXT */}
           <div className="absolute inset-0 flex items-center justify-center px-6 text-center">
             <motion.div
-              initial={{ opacity: 0, y: 16 }}
+              initial={{ opacity: 0, y: 18 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{
-                delay: GRID_PHASE + 0.1,
+                delay: TEXT_DELAY + 0.1,
                 duration: 0.6,
                 ease: "easeOut",
               }}
@@ -156,7 +121,7 @@ export default function IntroSplash({ show }) {
                 initial={{ opacity: 0, y: 6 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{
-                  delay: GRID_PHASE + 0.15,
+                  delay: TEXT_DELAY + 0.15,
                   duration: 0.4,
                   ease: "easeOut",
                 }}
@@ -169,7 +134,7 @@ export default function IntroSplash({ show }) {
                 initial={{ opacity: 0, y: 6 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{
-                  delay: GRID_PHASE + 0.25,
+                  delay: TEXT_DELAY + 0.25,
                   duration: 0.5,
                   ease: "easeOut",
                 }}
@@ -178,11 +143,11 @@ export default function IntroSplash({ show }) {
               </motion.h1>
 
               <motion.p
-                className="mt-3 text-sm font-medium uppercase tracking-[0.2em] text-zinc-600 sm:text-xs"
+                className="mt-4 text-sm font-medium uppercase tracking-[0.25em] text-zinc-600 sm:text-xs md:text-sm"
                 initial={{ opacity: 0, y: 4 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{
-                  delay: GRID_PHASE + 0.4,
+                  delay: TEXT_DELAY + 0.4,
                   duration: 0.45,
                   ease: "easeOut",
                 }}
