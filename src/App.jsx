@@ -22,7 +22,7 @@ export default function App() {
   const contactRef = useRef(null);
 
   const [active, setActive] = useState(null);
-  const bgUrl = `${import.meta.env.BASE_URL}media/images/bg2.png`;
+  const bgUrl = `${import.meta.env.BASE_URL}media/images/bg3.png`;
   const [expOpen, setExpOpen] = useState(false);
   const [activeAward, setActiveAward] = useState(null);
   const [showIntro, setShowIntro] = useState(true);
@@ -111,7 +111,7 @@ export default function App() {
               <h2 className="text-xl font-semibold tracking-tight">
                 Consulting and Marketing Projects
               </h2>
-              <p className="text-sm text-black">
+              <p className="text-sm text-zinc">
                 Click a project to view PDFs/videos.
               </p>
             </div>
@@ -139,7 +139,7 @@ export default function App() {
               <h2 className="text-xl font-semibold tracking-tight">
                 Work experience
               </h2>
-              <p className="text-sm text-black">
+              <p className="text-sm text-zinc">
                 Recent 4 • click to open roadmap
               </p>
             </div>
@@ -173,7 +173,7 @@ export default function App() {
               <h2 className="text-xl font-semibold tracking-tight">
                 Awards and achievements
               </h2>
-              <p className="text-sm text-black">
+              <p className="text-sm text-zinc">
                 Certificates, letters and recognitions
               </p>
             </div>
@@ -204,14 +204,14 @@ export default function App() {
           <section
             id="contact"
             ref={contactRef}
-            className="mt-14 rounded-2xl hero-glass border border-black/10 p-6"
+            className="mt-14 rounded-2xl hero-glass border border-white/10 p-6"
           >
             <div className="flex items-start justify-between gap-4">
               <h3 className="text-lg font-semibold">Contact</h3>
 
               <button
                 type="button"
-                className="rounded-xl border border-white/10 bg-white/10 px-3 py-2 text-sm text-black hover:bg-white/15"
+                className="rounded-xl border border-white/10 bg-white/10 px-3 py-2 text-sm text- hover:bg-white/15"
                 onClick={async () => {
                   const text =
                     "Email: zeenath.sivakumar@edhec.com\n" +
@@ -228,7 +228,7 @@ export default function App() {
               </button>
             </div>
 
-            <div className="mt-4 grid gap-3 text-black-200/90">
+            <div className="mt-4 grid gap-3 text-zinc-200/90">
               {[
                 { label: "Email", value: "zeenath.sivakumar@edhec.com" },
                 { label: "Mobile", value: "+33 0755010477" },
@@ -239,13 +239,13 @@ export default function App() {
                   className="flex flex-wrap items-center justify-between gap-3 rounded-xl border border-white/10 bg-white/10 backdrop-blur px-4 py-3"
                 >
                   <div className="text-sm">
-                    <span className="text-black">{item.label}:</span>{" "}
-                    <span className="text-black">{item.value}</span>
+                    <span className="text-zinc">{item.label}:</span>{" "}
+                    <span className="text-zinc">{item.value}</span>
                   </div>
 
                   <button
                     type="button"
-                    className="rounded-xl border border-white/10 bg-white/10 px-3 py-2 text-xs text-black hover:bg-white/15"
+                    className="rounded-xl border border-white/10 bg-white/10 px-3 py-2 text-xs text-zinc hover:bg-white/15"
                     onClick={async () => {
                       await navigator.clipboard.writeText(item.value);
 
