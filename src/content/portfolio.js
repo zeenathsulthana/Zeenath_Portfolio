@@ -3,7 +3,7 @@ const base = import.meta.env.BASE_URL;
 export const profile = {
   name: "C'est Moi!",
   title: "Zeenath Sulthana Sivakumar",
-  location: "Marketing | Brand Management | Storytelling Portfolio",
+  location: "Marketing | Brand Management | Storytelling",
   blurb:
     "I enjoy figuring out why things work and why they don’t. With a background in technology and a growing focus on marketing and strategy, I like building ideas that sit at the intersection of data, creativity, and real business impact. This space is a collection of my work, thoughts, and experiments. Take a look around!",
     proPic: `${base}media/images/propic.jpg`,
@@ -16,10 +16,9 @@ export const whoAmI = [
   {
     id: "about-1",
     title: "A marketer, analyst, and quiet operator behind the scenes",
-    image: `${base}media/images/pp.png`,
+    image: `${base}media/images/zee.JPG`,
     content:
-    "It was 2019 when I started my Bachelor.s in Computer Science and Engineering. Why? Because everyone said the same thing: AI is the future, and you have to be a part of it. So that’s exactly what I decided to do. I started from the very basics, learned everything from scratch: the math behind it and other underlying concepts. I eventually started my career implementing AI-based solutions for automotive and medical industries, working with large-scale service-based organizations. As my experience grew, my role evolved beyond pure technical work. I began working on business analysis and helping organizations strategize roadmaps for company-wide AI implementation, particularly within startups. This phase of my career made me fall in love with the management and strategy side of businesses. Working with and for the problems of several Fortune 100 companies gave me a deep understanding of how these giants operate and the complexity behind decision-making at that level. Everything eventually pushed me further in this direction. In 2025, I joined EDHEC Business School to pursue a Master’s in Strategy, Organisation and Consulting. Here I worked with organizations such as BCG Inverto, Capgemini Invent, L’Oréal, and many more, gaining even deeper exposure to strategic problem-solving and high-level business decision-making. After all these experiences and achievements I realised something: If you love your business, understand technology, have enough creativity to imagine possibilities, and can communicate your ideas clearly, then you should be working with, or becoming a part of, the teams that shape a company’s direction, mission, and vision. Because those are the people who truly determine where organizations go. Reaching that level is not something that happens overnight, but every leader I have known or met shares a common trait: they are, in many ways, jack-of-all-trades. They have almost covered everything in each level and rapidly moved onto higher levels. That is what I aspire to become: A good leader. AN EXPERT JACK OF ALL TRADES!" 
-  },
+    "I picked Computer Science and Engineering because it felt like the obvious choice, technology was booming, AI was everywhere, and it just made sense to be part of it. But somewhere along the way, it stopped being just a “smart decision” and became something I genuinely enjoyed. I liked figuring out how things worked, breaking them, fixing them, and making them better, That naturally pulled me toward data and digital products and eventually to Bank of America, where I worked as a Product Analyst. My role looked pretty structured from the outside: dashboards, CRM data, KPIs, go-to-market plans. But in reality, I was right in the middle of everything talking to tech teams, aligning with marketing, understanding operations, and trying to turn messy data into something people could actually use. And that’s where I noticed a pattern. The part I enjoyed most wasn’t just building or analyzing it was understanding people. Why users behave a certain way. Why some ideas work and others don’t. Why one strategy clicks and another just… doesn’t. That’s what pushed me to explore the business side more seriously. So in 2025, I joined EDHEC Business School for an MSc in Marketing Management. Since then, I’ve worked on projects with brands like L’Oréal, Nespresso, Carrefour, and Lacoste which honestly just made things more interesting. You start seeing how much thought goes into even the smallest decisions. What I’ve learned through all of this is simple: data is useful, but it’s not enough. You need to understand it, question it, and explain it in a way that actually drives action. That’s the kind of work I enjoy. Being in that space where tech, business, and creativity overlap connecting dots, making sense of things, and helping shape decisions. Long term? I just want to get really good at that."  },
   {
     id: "about-ai",
     title: "What do I think about AI?",
@@ -82,7 +81,18 @@ export const projects = [
       // OR: src: `${base}media/video/demo-reel.mp4`,
     },
   },
-  {
+    {
+    id: "Future Retail Challenge 2026: John Lewis & Partners",
+    type: "pdf",
+    title: "John Lewis: Reimagine the future of retail 2030",
+    year: "2026",
+    thumbnail: `${base}media/images/Frc.png`,
+    summary:
+      "Analysing finacial viability of Sustainable construction and renovation services.",
+    description: "Renowate is company that offers sustainable renovation and construction services. Methods such as pre-fabrication, digital twins, warehouse decentralization etc help reduce Co2 emissions and also reuse existing materials and components. This was a team effort for the EDHEC strategic Foresight Hackathon.",
+    pdf: `${base}media/pdf/Future Retail Challenge.pdf`,
+  },
+    {
     id: "vid-2",
     type: "video",
     title: "Nespresso - Thankyou Mom.",
@@ -95,19 +105,9 @@ export const projects = [
         "https://www.youtube.com/watch?v=TvGvWOVwrOk",
       // OR: src: `${base}media/video/demo-reel.mp4`,
     },
-  },
-    {
-    id: "Renowate: Sustainability Re-imagined",
-    type: "pdf",
-    title: "Renowate: Sustainability Re-imagined",
-    year: "2025",
-    thumbnail: `${base}media/images/reno.png`,
-    summary:
-      "Analysing finacial viability of Sustainable construction and renovation services.",
-    description: "Renowate is company that offers sustainable renovation and construction services. Methods such as pre-fabrication, digital twins, warehouse decentralization etc help reduce Co2 emissions and also reuse existing materials and components. This was a team effort for the EDHEC strategic Foresight Hackathon.",
-    pdf: `${base}media/pdf/renowate.pdf`,
   }
 ];
+
 
 export const awards = [
   {
