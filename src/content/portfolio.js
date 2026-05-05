@@ -6,7 +6,7 @@ export const profile = {
   location: "Marketing | Brand Management | Storytelling Portfolio",
   blurb:
     "I enjoy figuring out why things work and why they don’t. With a background in technology and a growing focus on marketing and strategy, I like building ideas that sit at the intersection of data, creativity, and real business impact. This space is a collection of my work, thoughts, and experiments. Take a look around!",
-    schoolLogo: `${base}media/images/edhec.webp`,
+    proPic: `${base}media/images/propic.jpg`,
   links: [
     { label: "LinkedIn", href: "https://www.linkedin.com/in/zeenath-sulthana-sivakumar-72845a171/" }
   ],

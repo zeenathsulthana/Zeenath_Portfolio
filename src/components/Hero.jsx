@@ -39,13 +39,15 @@ export default function Hero() {
             </div>
           </div>
 
-          {profile.schoolLogo ? (
+           {/* Right side: blended portrait panel */}
+          {profile.proPic ? (
             <div className="flex justify-center lg:justify-end">
-              <div className="h-32 w-56 overflow-hidden rounded-3xl sm:h-40 sm:w-72 lg:h-48 lg:w-80">
+              <div className="relative h-52 w-40 sm:h-60 sm:w-44 lg:h-72 lg:w-52 overflow-hidden rounded-2xl bg-gradient-to-b from-white/40 via-white/10 to-transparent shadow-lg backdrop-blur-sm">
+                <div className="pointer-events-none absolute inset-0 bg-gradient-to-tr from-white/30 via-transparent to-white/10" />
                 <img
-                  src={profile.schoolLogo}
-                  alt="Business school logo"
-                  className="h-full w-full object-contain"
+                  src={profile.proPic}
+                  alt="Profile picture"
+                  className="relative z-[1] h-full w-full object-cover"
                 />
               </div>
             </div>
