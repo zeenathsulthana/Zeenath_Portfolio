@@ -6,6 +6,7 @@ import ProjectModal from "./components/ProjectModal.jsx";
 import Footer from "./components/Footer.jsx";
 import ExperienceCard from "./components/ExperienceCard.jsx";
 import ExperienceModal from "./components/ExperienceModal.jsx";
+import ExperienceCarousel from "./components/ExperienceCarousel.jsx";
 import { projects, experiences, awards } from "./content/portfolio.js";
 import AwardCard from "./components/AwardCard.jsx";
 import AwardModal from "./components/AwardModal.jsx";
@@ -106,6 +107,32 @@ export default function App() {
             <Hero />
           </div>
 
+
+            <section ref={experienceRef} className="mt-14">
+            <div className="flex items-end justify-between gap-6">
+              <h2 className="text-xl font-semibold tracking-tight">
+                Work experience
+              </h2>
+              <p className="text-sm text-zinc">
+                Recent experiences • click to open roadmap
+              </p>
+            </div>
+
+            <div className="mt-5">
+              <ExperienceCarousel
+                experiences={experiences}
+                onOpen={(e) => {
+                  trackEvent("open_experience_roadmap", {
+                    experience_id: e.id,
+                    company: e.company,
+                    role: e.role,
+                  });
+                  setExpOpen(true);
+                }}
+              />
+            </div>
+          </section>
+
           <section id="work" ref={workRef} className="mt-10">
             <div className="flex items-end justify-between gap-6">
               <h2 className="text-xl font-semibold tracking-tight">
@@ -134,34 +161,6 @@ export default function App() {
             </div>
           </section>
 
-          <section ref={experienceRef} className="mt-14">
-            <div className="flex items-end justify-between gap-6">
-              <h2 className="text-xl font-semibold tracking-tight">
-                Work experience
-              </h2>
-              <p className="text-sm text-zinc">
-                Recent 4 • click to open roadmap
-              </p>
-            </div>
-
-            <div className="mt-5 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
-              {experiences.slice(0, 4).map((e) => (
-                <ExperienceCard
-                  key={e.id}
-                  exp={e}
-                  onOpen={() => {
-                    trackEvent("open_experience_roadmap", {
-                      experience_id: e.id,
-                      company: e.company,
-                      role: e.role,
-                    });
-                    setExpOpen(true);
-                  }}
-                />
-              ))}
-            </div>
-          </section>
-
           <ExperienceModal
             open={expOpen}
             onClose={() => setExpOpen(false)}
@@ -174,7 +173,7 @@ export default function App() {
                 Awards and achievements
               </h2>
               <p className="text-sm text-zinc">
-                Certificates, letters and recognitions
+                Certificates, awards and recognitions
               </p>
             </div>
 
@@ -211,7 +210,7 @@ export default function App() {
 
               <button
                 type="button"
-                className="rounded-xl border border-white/10 bg-white/10 px-3 py-2 text-sm text- hover:bg-white/15"
+                className="rounded-xl border border-white/10 bg-white/10 px-3 py-2 text-sm text-black hover:bg-white/15"
                 onClick={async () => {
                   const text =
                     "Email: zeenath.sivakumar@edhec.com\n" +

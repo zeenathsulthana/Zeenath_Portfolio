@@ -23,7 +23,7 @@ function AboutCard({ item, reverse }) {
           <h3 className="text-lg sm:text-xl font-semibold text-zinc-100">
             {item.title}
           </h3>
-          <p className="mt-3 text-sm sm:text-base leading-7 text-zinc-200/85">
+          <p className="mt-3 text-sm sm:text-base leading-7 text-zinc-200/85 text-justify">
             {item.content}
           </p>
         </div>
@@ -97,7 +97,7 @@ export default function AboutModal({ open, onClose, items }) {
             <div className="flex items-start justify-between gap-4 border-b border-white/10 p-4 sm:p-5">
               <div>
                 <h3 className="text-lg font-semibold text-zinc-100">Who am I</h3>
-                <p className="mt-1 text-sm text-zinc-300/80">
+                <p className="mt-1 text-sm text-zinc-300/80 text-justify" >
                   A little more beyond the portfolio.
                 </p>
               </div>

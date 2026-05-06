@@ -7,7 +7,7 @@ export const profile = {
   title: "Zeenath Sulthana Sivakumar",
   location: "Marketing | Brand Management | Storytelling",
   blurb:
-    "I enjoy figuring out why things work and why they don’t. With a background in technology and a growing focus on marketing and strategy, I like building ideas that sit at the intersection of data, creativity, and real business impact. This space is a collection of my work, thoughts, and experiments. Take a look around!",
+  "I’ve always been curious about why some things just work and why others don’t and that curiosity has really shaped my journey. I started out in tech, but gradually found myself drawn to marketing and strategy, especially where data and creativity come together to create real impact. This space is a little window into that journey ideas I’ve explored, things I’ve built, and experiments I’m still figuring out. Have a look around, you might find something that sparks your interest! ",
     proPic: `${base}media/images/propic.jpg`,
   links: [
     { label: "LinkedIn", href: "https://www.linkedin.com/in/zeenath-sulthana-sivakumar-72845a171/" }
@@ -23,40 +23,25 @@ export const whoAmI = [
     "I picked Computer Science and Engineering because it felt like the obvious choice, technology was booming, AI was everywhere, and it just made sense to be part of it. But somewhere along the way, it stopped being just a “smart decision” and became something I genuinely enjoyed. I liked figuring out how things worked, breaking them, fixing them, and making them better, That naturally pulled me toward data and digital products and eventually to Bank of America, where I worked as a Product Analyst. My role looked pretty structured from the outside: dashboards, CRM data, KPIs, go-to-market plans. But in reality, I was right in the middle of everything talking to tech teams, aligning with marketing, understanding operations, and trying to turn messy data into something people could actually use. And that’s where I noticed a pattern. The part I enjoyed most wasn’t just building or analyzing it was understanding people. Why users behave a certain way. Why some ideas work and others don’t. Why one strategy clicks and another just… doesn’t. That’s what pushed me to explore the business side more seriously. So in 2025, I joined EDHEC Business School for an MSc in Marketing Management. Since then, I’ve worked on projects with brands like L’Oréal, Nespresso, Carrefour, and Lacoste which honestly just made things more interesting. You start seeing how much thought goes into even the smallest decisions. What I’ve learned through all of this is simple: data is useful, but it’s not enough. You need to understand it, question it, and explain it in a way that actually drives action. That’s the kind of work I enjoy. Being in that space where tech, business, and creativity overlap connecting dots, making sense of things, and helping shape decisions. Long term? I just want to get really good at that."  },
   {
     id: "about-ai",
-    title: "What do I think about AI?",
-    image: `${base}media/images/CCG.webp`,
+    title: "Always chasing what’s next in tech",
+    image: `${base}media/images/Creativity.png`,
     content:
-      "From 2019 to today (2026), take it from someone who started with AI when there was no chatgpt or any gen-AI, just plain old regression and prediction models, and neural networks; AI has grown exponentially big. Me and my friends would discuss how AI will actually be in the future 5 years, and trust me when I say this: Today's scenario is eerily close to what we imagined/predicted back in 2019. AI has become a part of our daily lives, whether you accept it or not. Even our universities and workplaces are encouraging the use of AI, do you see how sticky it has become? Thats the biggest achievement any product can make, its becoming sticky. Being sticky refers to something becoming a part of so many things and processes that you can no more avoid using it. Its in your life already. I personally believe that AI is a part of our evolution. If you havent noticed it already, our attention span, as well as mental calculation/creativity/imagination has reduced quite a bit. We often find ourselves offloading a lot of these tasks to AI, you just take your phone out and use your favorite AI's mobile app for almost everything. Am I against it? Nope. But you gotta make sure that with AI, you are better, faster and more productive. So if you are still not there yet, jump onto the train as fast as you can, because everyone else around you is there. "
+    "I genuinely have fun keeping up with new technologies. Whenever something new comes out let it be AI tools, data products, platforms, or random productivity hacks, I’m that person who wants to try it, break it a bit, and see what it can actually do. I love understanding how it works under the hood, but even more, I like asking: okay, what does this change for people, for brands, for the way we work? That curiosity to fix things and make them better is what keeps pushing me beyond my “job description”. I’ve joined patent cluster programs, taken part in innovation summits, and contributed ideas that had to be both creative and realistic. It taught me how to balance big, bold ideas with real-world constraints. For me, tech is exciting because it never sits still and I like growing with it instead of watching from the side. " ,
   },
   {
     id: "about-2",
-    title: "I love Football",
-    image: `${base}media/images/football.png`,
+    title: "Travel, heritage and little stories everywhere",
+    image: `${base}media/images/fest.png`,
     content:
-      "Football has shaped at least 30-40% of my personality. It has taught me perseverance and discipline: virtues which I believe are insanely important. Just like a lot of other people in the world, football to me is way bigger than just a game. Its an emotion itself. Favorite teams? Real Madrid and PSG, Portugal and France. But hey, every team and every player is amazing."
-  }
-  ,
+"I love exploring places that have stories built into them like old monuments, historic streets, heritage sites, even small towns that don’t show up on typical travel lists.I love beaches for their beautiful sunsets, and mountains for the quiet and the views. I really enjoy wandering through countryside areas and just seeing how people live day to day. I’m also obsessed with festivals and cultural experiences around the world. On my list: the Lantern Festival in Thailand, La Tomatina in Spain, Carnival in Rio de Janeiro, and Cherry Blossom season in Japan. For me, travel isn’t just about “ticking off” countries, it’s about understanding how people celebrate, remember, and create meaning in their lives." ,
+  },  
   {
     id: "about-5",
-    title: "GAMING",
-    image: `${base}media/images/pop.webp`,
+    title: "ADVENTUROUS",
+    image: `${base}media/images/adv.png`,
     content:
-      "Got my first PC when I was 11 or 12, and yeah some how my very first game was Prince of Persia: Warrior Within and guys, believe me when I say this. NO GAME TILL TODAY'S DATE HAS COME CLOSE TO THE EXPERIENCE THE 11 YEAR OLD ME HAD. Even for todays date, the graphics, the motion physics of this game is insane. Perfectly engineered game, UBISOFT has mastered the art of creating RPG games. Yeah, Fromsoft also has been doing amazing. Loved playing Sekiro: shadows die twice and ofcourse, Elden ring. Cant wait to see what these two companies will bring next!"
-  },
-  {
-    id: "about-3",
-    title: "F1: Loved AMG even before they became popular!",
-    image: `${base}media/images/merc.webp`,
-    content:
-      "Since childhood, I always loved Mercedes. I remember seeing a mercedes and asking my dad what car it is. He said mercedes. It took the kid me 2 days to learn the pronounciation, and it has been on my mind ever since. My favourite car brand and my favorite F1 team."
-  },
-  {
-    id: "about-4",
-    title: "MUSIC et EDM",
-    image: `${base}media/images/mg.jpg`,
-    content:
-      "For the longest time, I wanted to become a Dj. Heard Martin Garrix in teenages and suddenly had shift a in my personality, I still Dj whenver I get the chance to. Favourite genres? Bass House, Big room, techno. Fav EDM artists: Garrix, Vluarr, Knock2, Illenium,Rezz. Favourite singers/Bands? Evanescence, Linkin Park, Charlie Puth, Ariana Grande, Motionless in White, Paramore, Juice wrld, Mitraz, Maroon5, Yungblud (The list wont ever stop so imma stop here)"
-  }
+    "I definitely have an adventurous side. I like saying yes to things that make my brain go “are we really doing this?” and then doing it anyway. Ziplining, skydiving, trying new adventure parks, hiking tougher trails… I enjoy that little rush right before you step off the platform or jump. Those moments taught me how to manage fear, trust the process, and enjoy the experience instead of overthinking it. And honestly, that mindset spills into how I work too: I’m not afraid to test ideas, try something new, or take a calculated risk if I believe it can make things better " , 
+},
   //,
   // {
   //   id: "about-6",
@@ -146,7 +131,7 @@ export const awards = [
     summary:
       "Finalist in a global innovation challenge for L'Oréal Brandstrom.",
     description:
-      "Co‑created a concept that mixed beauty, tech and new usage moments for younger consumers. It was a chance to play inside the L'Oréal universe—blending brand storytelling, insight work and concrete activation ideas instead of just talking theory.",
+      "Co‑created a concept that mixed beauty, tech and new usage moments for younger consumers. It was a chance to play inside the L'Oréal universe blending brand storytelling, insight work and concrete activation ideas instead of just talking theory.",
       link: "https://www.linkedin.com/posts/zeenath-sulthana-sivakumar-72845a171_innovation-luxuryfragrance-brandstorm-ugcPost-7436857205473226752-1ge0",
     imageOnly: true,
     },
@@ -191,13 +176,13 @@ export const experiences = [
   {
     id: "bofa",
     company: "Bank of America",
-    logo: `${base}media/images/Bank-of-America-logo.png`,
+    logo: `${base}media/images/bofapng.png`,
     role: "Product Analyst",
     location: "Chennai, India",
     start: "Apr 2022",
     end: "Jun 2025",
     description:
-      "Bank of America is one of the biggest banks in the world, serving millions of customers across payments, banking, and financial services. I was part of the Merchant Services team in Chennai, working on products that help businesses actually get paid—things like onboarding flows, payment journeys, and merchant experience. My day-to-day was a mix of product + marketing analysis—digging into dashboards, tracking KPIs, and figuring out where users were dropping off and why. But what made it really interesting was getting pulled into innovation programs and patent clustering work. I got to pitch ideas around improving onboarding and risk scoring, and a few of them were even shortlisted internally. That’s when I started thinking less like “just an analyst” and more like someone owning the product end-to-end.",
+      "Bank of America is one of the biggest banks in the world, serving millions of customers across payments, banking, and financial services. I was part of the Merchant Services team in Chennai, working on products that help businesses actually get paid things like onboarding flows, payment journeys, and merchant experience. My day-to-day was a mix of product and marketing analysis, digging into dashboards, tracking KPIs, and figuring out where users were dropping off and why. But what made it really interesting was getting pulled into innovation programs and patent clustering work. I got to pitch ideas around improving onboarding and risk scoring, and a few of them were even shortlisted internally. That’s when I started thinking less like “just an analyst” and more like someone owning the product end-to-end.",
   },
   {
     id: "hebesec",
@@ -208,18 +193,18 @@ export const experiences = [
     start: "Sept 2021",
     end: "Aug 2022",
     description:
-      "Hebesec is a cybersecurity and SaaS startup helping businesses protect themselves from digital threats. I joined when they were starting to think about international markets, so things were moving fast. My work was mostly around understanding new markets—what different countries care about when it comes to cybersecurity, which industries are more sensitive, and where the real opportunities were. I worked on segmentation, simple personas, and helping shape how we spoke to different regions so it didn’t feel generic or copied. It was my first real exposure to how much strategy changes when you move across geographies—and how small tweaks in positioning can completely change how a product is received.",
+      "Hebesec is a cybersecurity and SaaS startup helping businesses protect themselves from digital threats. I joined when they were starting to think about international markets, so things were moving fast. My work was mostly around understanding new markets, what different countries care about when it comes to cybersecurity, which industries are more sensitive, and where the real opportunities were. I worked on segmentation, simple personas, and helping shape how we spoke to different regions so it didn’t feel generic or copied. It was my first real exposure to how much strategy changes when you move across geographies and how small tweaks in positioning can completely change how a product is received.",
   },
   {
     id: "frc-jlp",
     company: "Future Retail Challenge 2026 – John Lewis & Partners",
-    logo: `${base}media/images/wrc.png`,
+    logo: `${base}media/images/John_Lewis_&_Partners.png`,
     role: "Student Consultant",
     location: "Lille, France",
     start: "Jan 2026",
     end: "Apr 2026",
     description:
-      "John Lewis & Partners is a major UK retail brand known for its department stores and strong customer experience focus. As part of EDHEC’s team for the World Retail Congress Future Retail Challenge, I worked on rethinking what the brand could look like in 2030. The idea was to move it from a traditional retail store to something more experience-driven and relevant for younger shoppers. I focused mainly on customer journeys and storytelling—taking research, trends, and insights and turning them into a clear narrative that explained how digital, services, and in-store experiences could come together. It was a lot about simplifying complex ideas so they actually stick with people.",
+      "John Lewis & Partners is a major UK retail brand known for its department stores and strong customer experience focus. As part of EDHEC’s team for the World Retail Congress Future Retail Challenge, I worked on rethinking what the brand could look like in 2030. The idea was to move it from a traditional retail store to something more experience-driven and relevant for younger shoppers. I focused mainly on customer journeys and storytelling; taking research, trends, and insights and turning them into a clear narrative that explained how digital, services, and in-store experiences could come together. It was a lot about simplifying complex ideas so they actually stick with people.",
   },
   // add more...
 ];
