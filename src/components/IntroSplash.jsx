@@ -64,6 +64,48 @@ export default function IntroSplash({ show }) {
           {/* subtle vignette */}
           <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(0,0,0,0.06),transparent_60%)]" />
 
+                    {/* FLOWING RIBBONS BACKGROUND */}
+          <div className="pointer-events-none absolute inset-0 overflow-hidden">
+            {/* top ribbon */}
+            <motion.div
+              className="absolute -left-1/3 top-1/4 h-24 w-[140%] bg-gradient-to-r from-blue-500/10 via-purple-500/15 to-pink-500/10 blur-3xl"
+              initial={{ x: "-20%" }}
+              animate={{ x: "20%" }}
+              transition={{
+                duration: 6,
+                repeat: Infinity,
+                repeatType: "reverse",
+                ease: "easeInOut",
+              }}
+            />
+
+            {/* middle ribbon */}
+            <motion.div
+              className="absolute -right-1/3 top-1/2 h-20 w-[140%] bg-gradient-to-r from-emerald-500/10 via-cyan-500/15 to-blue-500/10 blur-3xl"
+              initial={{ x: "20%" }}
+              animate={{ x: "-20%" }}
+              transition={{
+                duration: 7,
+                repeat: Infinity,
+                repeatType: "reverse",
+                ease: "easeInOut",
+              }}
+            />
+
+            {/* bottom ribbon */}
+            <motion.div
+              className="absolute -left-1/3 bottom-1/5 h-24 w-[140%] bg-gradient-to-r from-amber-500/12 via-rose-500/15 to-purple-500/12 blur-3xl"
+              initial={{ x: "-10%" }}
+              animate={{ x: "15%" }}
+              transition={{
+                duration: 8,
+                repeat: Infinity,
+                repeatType: "reverse",
+                ease: "easeInOut",
+              }}
+            />
+          </div>
+
           {/* SCATTERED BUT BALANCED LOGOS */}
           {logos.map((logo, index) => (
             <motion.div
@@ -117,7 +159,7 @@ export default function IntroSplash({ show }) {
               }}
             >
               <motion.p
-                className="text-[11px] uppercase tracking-[0.35em] text-zinc-500"
+                className="text-[11px] uppercase tracking-[0.35em] text-black"
                 initial={{ opacity: 0, y: 6 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{

@@ -182,7 +182,7 @@ export const experiences = [
     start: "Apr 2022",
     end: "Jun 2025",
     description:
-      "Bank of America is one of the biggest banks in the world, serving millions of customers across payments, banking, and financial services. I was part of the Merchant Services team in Chennai, working on products that help businesses actually get paid things like onboarding flows, payment journeys, and merchant experience. My day-to-day was a mix of product and marketing analysis, digging into dashboards, tracking KPIs, and figuring out where users were dropping off and why. But what made it really interesting was getting pulled into innovation programs and patent clustering work. I got to pitch ideas around improving onboarding and risk scoring, and a few of them were even shortlisted internally. That’s when I started thinking less like “just an analyst” and more like someone owning the product end-to-end.",
+     "Bank of America is one of the biggest global banks, so the scale of everything we worked on was huge. I was part of the Merchant Services team, working on digital products that help businesses get paid smoothly from onboarding and verification flows to payment journeys and merchant experience. A typical week for me was a mix of analysing data from dashboards, tracking product and marketing KPIs, digging into where users dropped off, and turning those findings into clear next steps for the teams. I worked closely with product, tech, risk and operations, so I got used to switching between “business language” and “tech language” depending on the room I was in. ",
   },
   {
     id: "hebesec",
@@ -204,7 +204,7 @@ export const experiences = [
     start: "Jan 2026",
     end: "Apr 2026",
     description:
-      "John Lewis & Partners is a major UK retail brand known for its department stores and strong customer experience focus. As part of EDHEC’s team for the World Retail Congress Future Retail Challenge, I worked on rethinking what the brand could look like in 2030. The idea was to move it from a traditional retail store to something more experience-driven and relevant for younger shoppers. I focused mainly on customer journeys and storytelling; taking research, trends, and insights and turning them into a clear narrative that explained how digital, services, and in-store experiences could come together. It was a lot about simplifying complex ideas so they actually stick with people.",
-  },
+      "John Lewis & Partners is a major UK retail brand known for its department stores and strong customer experience focus. As part of EDHEC’s team for the World Retail Congress Future Retail Challenge, I worked on rethinking what the brand could look like in 2030. The idea was to move it from a traditional retail store to something more experience-driven and relevant for younger shoppers. I focused mainly on customer journeys and storytelling; taking research, trends, and insights and turning them into a clear narrative that explained how digital, services, and in-store experiences could come together" ,
+  }
   // add more...
 ];

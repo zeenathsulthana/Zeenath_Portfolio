@@ -8,6 +8,7 @@ import ExperienceCard from "./components/ExperienceCard.jsx";
 import ExperienceModal from "./components/ExperienceModal.jsx";
 import ExperienceCarousel from "./components/ExperienceCarousel.jsx";
 import { projects, experiences, awards } from "./content/portfolio.js";
+import CursorSparkle from "./components/CursorSparkle.jsx";
 import AwardCard from "./components/AwardCard.jsx";
 import AwardModal from "./components/AwardModal.jsx";
 import IntroSplash from "./components/IntroSplash.jsx";
@@ -94,6 +95,7 @@ export default function App() {
   return (
     <>
       <IntroSplash show={showIntro} />
+        <CursorSparkle />
 
       <div
         ref={ref}
