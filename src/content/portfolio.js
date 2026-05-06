@@ -1,3 +1,5 @@
+import { image } from "framer-motion/client";
+
 const base = import.meta.env.BASE_URL;
 
 export const profile = {
@@ -127,25 +129,38 @@ export const awards = [
     title: "Carrefour Challenge Finalist",
     issuer: "World Retail Congress / EDHEC",
     year: "2026",
-    thumbnail: `${base}media/images/carrefour.png`,
+    thumbnail: `${base}media/images/carr.jpg`,
     summary:
       "Finalist in carrefour challenge on the future of grocery and omnichannel.",
     description:
       "Worked with a team to imagine how Carrefour could serve tomorrow’s shoppers better. We dug into how people buy groceries across markets and turned those insights into ideas for smarter assortments, smoother omnichannel journeys, and more fun, experience-led stores.",
-         link: "https://www.linkedin.com/posts/zeenath-sulthana-sivakumar-72845a171_carrefourchallenge-edhec-learningbydoing-ugcPost-7414441631896162304-3tj6",
-  },
+      link: "https://www.linkedin.com/posts/zeenath-sulthana-sivakumar-72845a171_carrefourchallenge-edhec-learningbydoing-ugcPost-7414441631896162304-3tj6",
+    imageOnly: true,
+    },
   {
     id: "award-3",
-    title: "L'Oréal Brandstorm / Challenge Finalist",
+    title: "L'Oréal Brandstorm Challenge Finalist",
     issuer: "L'Oréal",
     year: "2025",
-    thumbnail: `${base}media/images/Loreal.jpg`,
+    thumbnail: `${base}media/images/brandstrom.png`,
     summary:
       "Finalist in a global innovation challenge for L'Oréal Brandstrom.",
     description:
       "Co‑created a concept that mixed beauty, tech and new usage moments for younger consumers. It was a chance to play inside the L'Oréal universe—blending brand storytelling, insight work and concrete activation ideas instead of just talking theory.",
-     link: "https://www.linkedin.com/posts/zeenath-sulthana-sivakumar-72845a171_innovation-luxuryfragrance-brandstorm-ugcPost-7436857205473226752-1ge0",
-  },
+      link: "https://www.linkedin.com/posts/zeenath-sulthana-sivakumar-72845a171_innovation-luxuryfragrance-brandstorm-ugcPost-7436857205473226752-1ge0",
+    imageOnly: true,
+    },
+  {
+  id: "award-lvmh",
+  title: "Inside LVMH Certificate",
+  issuer: "LVMH",
+  year: "2023",
+  thumbnail: `${base}media/images/lvmh.jpeg`,
+  summary: "Completed Inside LVMH, exploring how luxury brands are built from the inside.",
+  description:
+    "Went through Inside LVMH to understand how the group thinks about heritage, innovation, and brand equity. It was a nice bridge between my interest in marketing and my curiosity about how luxury really works behind the scenes.",
+  pdf: `${base}media/pdf/lvmh.pdf`,
+},
   {
     id: "award-4",
     title: "Smart India Hackathon Winner",
