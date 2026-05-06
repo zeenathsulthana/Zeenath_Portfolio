@@ -106,7 +106,7 @@ export const projects = [
       hook: "Next‑gen shopping: the future of grocery is instant.",
     summary:
       "Turning retail pain points into seamless, AI-powered shopping experiences.",
-    description: " This idea turns Carrefour into more than just a store it becomes a smart shopping companion that shows up exactly when you need it. By using geolocation and personalized push notifications, it blends online convenience with real-world proximity to nudge customers at the right time, place, and moment. The result? More spontaneous visits, higher engagement, and a shopping experience that feels intuitive, relevant, and almost a step ahead of the customer ",
+    description: "This idea turns Carrefour into more than just a store it becomes a smart shopping companion that shows up exactly when you need it. By using geolocation and personalized push notifications, it blends online convenience with real-world proximity to nudge customers at the right time, place, and moment. The result? More spontaneous visits, higher engagement, and a shopping experience that feels intuitive, relevant, and almost a step ahead of the customer.",
     pdf: `${base}media/pdf/CARREFOUR PRESENTATION.pdf`,
   },
 ];
