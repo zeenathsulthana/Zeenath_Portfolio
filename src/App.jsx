@@ -7,6 +7,7 @@ import Footer from "./components/Footer.jsx";
 import ExperienceCard from "./components/ExperienceCard.jsx";
 import ExperienceModal from "./components/ExperienceModal.jsx";
 import ExperienceCarousel from "./components/ExperienceCarousel.jsx";
+import AwardsWheel from "./components/AwardsWheel.jsx";
 import { projects, experiences, awards } from "./content/portfolio.js";
 import CursorSparkle from "./components/CursorSparkle.jsx";
 import AwardCard from "./components/AwardCard.jsx";
@@ -136,32 +137,55 @@ export default function App() {
           </section>
 
           <section id="work" ref={workRef} className="mt-10">
-            <div className="flex items-end justify-between gap-6">
-              <h2 className="text-xl font-semibold tracking-tight">
-                Consulting and Marketing Projects
-              </h2>
-              <p className="text-sm text-zinc">
-                Click a project to view PDFs/videos.
-              </p>
-            </div>
+  <div className="flex items-end justify-between gap-6">
+    <h2 className="text-xl font-semibold tracking-tight">
+      Consulting and Marketing Projects
+    </h2>
+    <p className="text-sm text-zinc">
+      Click a project to view PDFs/videos.
+    </p>
+  </div>
 
-            <div className="mt-5 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-              {projects.map((p) => (
-                <ProjectCard
-                  key={p.id}
-                  project={p}
-                  onOpen={() => {
-                    trackEvent("open_project", {
-                      project_id: p.id,
-                      project_title: p.title,
-                      project_type: p.type,
-                    });
-                    setActive(p);
-                  }}
-                />
-              ))}
-            </div>
-          </section>
+  {/* featured row */}
+  <div className="mt-6 grid gap-4">
+    {projects[0] && (
+      <div className="col-span-1">
+        <ProjectCard
+          project={projects[0]}
+          onOpen={() => {
+            const p = projects[0];
+            trackEvent("open_project", {
+              project_id: p.id,
+              project_title: p.title,
+              project_type: p.type,
+            });
+            setActive(p);
+          }}
+          variant="featured"
+        />
+      </div>
+    )}
+  </div>
+
+  {/* secondary row */}
+  <div className="mt-4 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+    {projects.slice(1).map((p) => (
+      <ProjectCard
+        key={p.id}
+        project={p}
+        onOpen={() => {
+          trackEvent("open_project", {
+            project_id: p.id,
+            project_title: p.title,
+            project_type: p.type,
+          });
+          setActive(p);
+        }}
+        variant="secondary"
+      />
+    ))}
+  </div>
+</section>
 
           <ExperienceModal
             open={expOpen}
@@ -179,21 +203,11 @@ export default function App() {
               </p>
             </div>
 
-            <div className="mt-5 grid grid-cols-1 gap-4 lg:grid-cols-2">
-              {awards.map((a) => (
-                <AwardCard
-                  key={a.id}
-                  award={a}
-                  onOpen={() => {
-                    trackEvent("open_award", {
-                      award_id: a.id,
-                      award_title: a.title,
-                      issuer: a.issuer,
-                    });
-                    setActiveAward(a);
-                  }}
-                />
-              ))}
+            <div className="mt-5">
+              <AwardsWheel
+                awards={awards}
+                onOpen={(award) => setActiveAward(award)}
+              />
             </div>
           </section>
 
@@ -212,7 +226,7 @@ export default function App() {
 
               <button
                 type="button"
-                className="rounded-xl border border-white/10 bg-white/10 px-3 py-2 text-sm text-black hover:bg-white/15"
+                className="rounded-xl border border-white/10 bg-white/10 px-3 py-2 text-sm text-zinc hover:bg-white/15"
                 onClick={async () => {
                   const text =
                     "Email: zeenath.sivakumar@edhec.com\n" +

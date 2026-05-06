@@ -1,32 +1,46 @@
 import { motion } from "framer-motion";
 
-export default function AwardCard({ award, onOpen }) {
+export default function AwardCard({ award, onOpen, variant = "normal" }) {
+  const isLarge = variant === "large";
+
   return (
-    <div className="glass-card rounded-3xl p-4 sm:p-5 flex flex-col gap-3">
-      {/* top: image + title */}
+    <div
+      className={`
+        glass-card rounded-3xl p-4 sm:p-5 flex flex-col gap-3
+        ${isLarge ? "h-64 sm:h-72" : ""}
+      `}
+    >
+      {/* top: big thumbnail area */}
       <div className="flex items-center gap-3">
-        <div className="h-14 w-14 rounded-2xl overflow-hidden bg-white/70 flex items-center justify-center">
-          <img
-            src={award.thumbnail}
-            alt={award.title}
-            className="h-full w-full object-contain"
-          />
-        </div>
+        <div
+            className={`
+              overflow-hidden bg-white/70 flex items-center justify-center
+              ${isLarge ? "h-28 w-28 sm:h-32 sm:w-32 rounded-3xl" : "h-14 w-14 rounded-2xl"}
+            `}
+          >
+            <img
+              src={award.thumbnail}
+              alt={award.title}
+              className="h-full w-full object-contain"
+            />
+          </div>
         <div>
-          <h3 className="text-sm font-semibold text-ivory">
+          <h3 className="text-sm sm:text-base font-semibold text-ivory">
             {award.title}
           </h3>
-          <p className="text-xs text-ivory/60">
+          <p className="text-xs sm:text-sm text-ivory/60">
             {award.issuer} · {award.year}
           </p>
         </div>
       </div>
 
       {/* summary */}
-      <p className="text-sm text-ivory/80">{award.summary}</p>
+      <p className="text-xs sm:text-sm text-ivory/80 line-clamp-3">
+        {award.summary}
+      </p>
 
       {/* actions */}
-      <div className="mt-2 flex flex-wrap gap-2">
+      <div className="mt-auto flex flex-wrap gap-2">
         <button
           type="button"
           onClick={onOpen}

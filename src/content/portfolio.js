@@ -3,7 +3,7 @@ import { image } from "framer-motion/client";
 const base = import.meta.env.BASE_URL;
 
 export const profile = {
-  name: "C'est Moi!",
+  name: "Bonjour!!",
   title: "Zeenath Sulthana Sivakumar",
   location: "Marketing | Brand Management | Storytelling",
   blurb:
@@ -60,6 +60,7 @@ export const projects = [
     title: "Alchime by YSL",
     year: "2025",
     thumbnail: `${base}media/images/alchime.png`,
+      hook: "A fragrance collection that’s unique to your bond.",
     summary: "The unique scent of connection by YSL. A secret which you cant buy.",
     description: "What if you, your partner, your friend can create something that only both of you know the secret to? We introduce you Alchime by Yves Saint Laurent, a series of perfumes which is engineered specifically in a way that lets you combine any 2 perfumes together, and the result will produce a registered-named 3rd perfume which isnt available in any of the other bottles. Its unique. Its something that only both of you know the secret to!",
     video: {
@@ -74,6 +75,7 @@ export const projects = [
     title: "John Lewis: Reimagine the future of retail 2030",
     year: "2026",
     thumbnail: `${base}media/images/Frc.png`,
+      hook: "The future of retail is built on real trends.",
     summary:
       "Turning retail pain points into seamless, AI-powered shopping experiences.",
     description: "Today’s retail trend is clearly moving towards hyper-personalisation, seamless omnichannel experiences, and faster, frictionless shopping journeys, but customers in stores like John Lewis still face pain points like difficulty finding products, stock inconsistencies, and long checkout queues. This project looks at how these gaps affect the overall experience despite rising expectations shaped by AI-driven digital platforms. To address this, it proposes an AI-powered retail ecosystem that uses real-time data to improve inventory availability and offers personalised recommendations, smart in-store navigation, and smoother checkout. In line with current retail innovation trends, it transforms the store into a more intelligent, responsive, and customer-centric environment.",
@@ -85,6 +87,7 @@ export const projects = [
     title: "Nespresso - Thankyou Mom.",
     year: "2026",
     thumbnail: `${base}media/images/nestle.png`,
+        hook: "A thank you, turned into a daily ritual.",
     summary: "Nespresso thanks each and every mother for all their untold and unrewarded efforts.",
     description: "Nestle's Nespresso never had a specific emotional connection with its customers. Just plain old random adrenaline videos surrounding coffee. But what if a cup of coffee meant something much more?",
     video: {
@@ -92,8 +95,21 @@ export const projects = [
         "https://www.youtube.com/watch?v=TvGvWOVwrOk",
       // OR: src: `${base}media/video/demo-reel.mp4`,
     },
-  }
+  },
+    {
+    id: "Carrefour Challenge",
+    type: "pdf",
+    title: "Carrefour is right here when you need it",
+    year: "2026",
+    thumbnail: `${base}media/images/car2.png`,
+      hook: "Next‑gen shopping: the future of grocery is instant.",
+    summary:
+      "Turning retail pain points into seamless, AI-powered shopping experiences.",
+    description: " This idea turns Carrefour into more than just a store it becomes a smart shopping companion that shows up exactly when you need it. By using geolocation and personalized push notifications, it blends online convenience with real-world proximity to nudge customers at the right time, place, and moment. The result? More spontaneous visits, higher engagement, and a shopping experience that feels intuitive, relevant, and almost a step ahead of the customer ",
+    pdf: `${base}media/pdf/CARREFOUR PRESENTATION.pdf`,
+  },
 ];
+
 
 
 export const awards = [
