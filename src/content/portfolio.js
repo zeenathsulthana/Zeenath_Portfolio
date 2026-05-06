@@ -168,7 +168,7 @@ export const awards = [
     title: "Smart India Hackathon Winner",
     issuer: "Smart India Hackathon",
     year: "2021",
-    thumbnail: `${base}media/pdf/sih.pdf`,
+    thumbnail: `${base}media/images/sih1.png`,
     summary:
       "National-level hackathon win for an applied tech solution.",
     description:
@@ -180,7 +180,7 @@ export const awards = [
     title: "CompTIA Security+ Certified",
     issuer: "CompTIA",
     year: "2022",
-    thumbnail: `${base}media/pdf/comptia.pdf`,
+    thumbnail: `${base}media/images/com1.png`,
     summary:
       "Global certification in core cybersecurity concepts and best practices.",
     description:
