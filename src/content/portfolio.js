@@ -3,7 +3,7 @@ import { image } from "framer-motion/client";
 const base = import.meta.env.BASE_URL;
 
 export const profile = {
-  name: "Bonjour!!",
+  name: "Bonjour!!!",
   title: "Zeenath Sulthana Sivakumar",
   location: "Marketing | Brand Management | Storytelling",
   blurb:
