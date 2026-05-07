@@ -156,15 +156,15 @@ export default function ProjectModal({ project, onClose }) {
 
             {/* SINGLE-COLUMN CONTENT */}
             <div className="relative p-4 sm:p-5 grid gap-4">
-              {isPdf && project.pdf ? (
-                <div className="overflow-hidden rounded-2xl border border-white/10 bg-white/5">
-                  <iframe
-                    title="PDF viewer"
-                    src={`${project.pdf}#toolbar=0&navpanes=0&scrollbar=0&view=FitH`}
-                    className="h-[70vh] w-full"
-                  />
-                </div>
-              ) : null}
+             {isPdf && project.pdf ? (
+                  <div className="overflow-hidden rounded-2xl border border-white/10 bg-white/5">
+                    <iframe
+                      title="PDF viewer"
+                      src={`${project.pdf}#toolbar=0&navpanes=0&scrollbar=0&view=FitH`}
+                      className="h-[60vh] sm:h-[70vh] w-full"
+                    />
+                  </div>
+                ) : null}
 
               {isVideo && project.video?.src ? (
                 <video

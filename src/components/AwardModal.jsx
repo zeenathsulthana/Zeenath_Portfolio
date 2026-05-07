@@ -97,32 +97,29 @@ export default function AwardModal({ award, onClose }) {
      
 
             <div className="p-4 sm:p-5 flex flex-col gap-4 overflow-hidden flex-1 min-h-0">
-                {/* description */}
-                <div className="p-4 sm:p-5 grid gap-4 overflow-hidden flex-1 min-h-0">
-                            <p className="text-sm text-zinc-200/85">{award.description}</p>
+                  <div className="p-4 sm:p-5 grid gap-4 overflow-hidden flex-1 min-h-0">
+                    <p className="text-sm text-zinc-200/85">{award.description}</p>
 
-                {/* big visual area */}
-                {award.imageOnly && award.thumbnail ? (
-                  // image-only mode (Carrefour, L'Oréal)
-                  <div className="rounded-2xl overflow-hidden bg-black/20 flex-1 min-h-[40vh] flex items-center justify-center">
-                    <img
-                      src={award.thumbnail}
-                      alt={award.title}
-                      className="max-h-full max-w-full object-contain"
-                    />
-                  </div>
-                ) : (
-                  // default: PDF viewer (BoFA, certificates)
-                            <div className="rounded-2xl overflow-hidden border border-white/10 bg-black/20 flex-1 min-h-[60vh]">
-                              <iframe
-                                src={`${award.pdf}#toolbar=0&navpanes=0&scrollbar=0&view=FitH`}
-                                title={award.title}
-                                className="h-full w-full"
-                              />
-                           </div>
+                    {/* big visual area */}
+                    {award.imageOnly && award.thumbnail ? (
+                      <div className="rounded-2xl overflow-hidden bg-black/20 flex-1 min-h-[40vh] flex items-center justify-center">
+                        <img
+                          src={award.thumbnail}
+                          alt={award.title}
+                          className="max-h-full max-w-full object-contain"
+                        />
+                      </div>
+                    ) : (
+                      <div className="rounded-2xl overflow-hidden border border-white/10 bg-black/20">
+                        <iframe
+                          src={`${award.pdf}#toolbar=0&navpanes=0&scrollbar=0&view=FitH`}
+                          title={award.title}
+                          className="h-[60vh] sm:h-[70vh] w-full"
+                        />
+                      </div>
                     )}
-                            </div>
                   </div>
+</div>
           </motion.div>
         </motion.div>
       ) : null}
