@@ -62,6 +62,37 @@ function ExperienceRoadmapCard({ e, logoH = 92 }) {
     </div>
   );
 }
+function MobileExperienceList({ experiences }) {
+  return (
+    <div className="space-y-3">
+      {experiences.map((e) => (
+        <div key={e.id} className="glass-card rounded-3xl overflow-hidden border border-white/10">
+          <div className="flex items-center gap-3 p-4 border-b border-white/10 bg-white/5">
+            <div className="h-10 w-10 overflow-hidden rounded-2xl border border-white/10 bg-white/5">
+              <img
+                src={e.logo}
+                alt={e.company}
+                className="h-full w-full object-contain"
+              />
+            </div>
+            <div className="min-w-0">
+              <p className="text-sm font-semibold leading-tight">{e.role}</p>
+              <p className="text-xs text-zinc-300/80 truncate">{e.company}</p>
+              <p className="mt-1 text-xs text-zinc-300/80">
+                {e.start} – {e.end} • {e.location}
+              </p>
+            </div>
+          </div>
+          <div className="p-4">
+            <p className="text-sm text-zinc-200/85 whitespace-pre-wrap leading-relaxed">
+              {e.description}
+            </p>
+          </div>
+        </div>
+      ))}
+    </div>
+  );
+}
 
 function Roadmap({ experiences, scrollRootRef }) {
   const W = 1400;
@@ -288,22 +319,29 @@ export default function ExperienceModal({ open, onClose, experiences }) {
               </button>
             </div>
 
-            <div className="p-4 sm:p-5 grid gap-5 overflow-hidden flex-1 min-h-0">
-              <LogoCarousel experiences={experiences} />
+                  <div className="p-4 sm:p-5 grid gap-5 overflow-hidden flex-1 min-h-0">
+          {/* logo carousel stays for all sizes */}
+          <LogoCarousel experiences={experiences} />
 
-              <div
-                ref={scrollRootRef}
-                className="overflow-y-auto overflow-x-auto"
-                style={{ maxHeight: "100%" }}
-              >
-                <div className="min-w-max px-6">
-                  <Roadmap
-                    experiences={experiences}
-                    scrollRootRef={scrollRootRef}
-                  />
-                </div>
-              </div>
+          {/* mobile: simple vertical list, no horizontal scroll */}
+          <div className="sm:hidden overflow-y-auto" style={{ maxHeight: "100%" }}>
+            <MobileExperienceList experiences={experiences} />
+          </div>
+
+          {/* desktop: keep the roadmap with horizontal layout */}
+          <div
+            ref={scrollRootRef}
+            className="hidden sm:block overflow-y-auto overflow-x-auto"
+            style={{ maxHeight: "100%" }}
+          >
+            <div className="min-w-max px-6">
+              <Roadmap
+                experiences={experiences}
+                scrollRootRef={scrollRootRef}
+              />
             </div>
+          </div>
+        </div>
           </motion.div>
         </motion.div>
       ) : null}
