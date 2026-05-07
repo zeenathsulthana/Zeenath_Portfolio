@@ -194,23 +194,34 @@ export default function App() {
           />
 
           <section ref={awardsRef} className="mt-14">
-            <div className="flex items-end justify-between gap-6">
-              <h2 className="text-xl font-semibold tracking-tight">
-                Awards and achievements
-              </h2>
-              <p className="text-sm text-zinc">
-                Certificates, awards and recognitions
-              </p>
-            </div>
+              <div className="flex items-end justify-between gap-6">
+                <h2 className="text-xl font-semibold tracking-tight">
+                  Awards and achievements
+                </h2>
+                <p className="text-sm text-zinc">
+                  Certificates, awards and recognitions
+                </p>
+              </div>
 
-            <div className="mt-5">
-              <AwardsWheel
-                awards={awards}
-                onOpen={(award) => setActiveAward(award)}
-              />
-            </div>
-          </section>
+              {/* mobile: simple vertical list */}
+              <div className="mt-5 sm:hidden grid gap-4">
+                {awards.map((a) => (
+                  <AwardCard
+                    key={a.id}
+                    award={a}
+                    onOpen={() => setActiveAward(a)}
+                  />
+                ))}
+              </div>
 
+              {/* desktop: wheel */}
+              <div className="mt-5 hidden sm:block">
+                <AwardsWheel
+                  awards={awards}
+                  onOpen={(award) => setActiveAward(award)}
+                />
+              </div>
+            </section>
           <AwardModal
             award={activeAward}
             onClose={() => setActiveAward(null)}
