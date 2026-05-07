@@ -3,7 +3,6 @@ import { motion } from "framer-motion";
 export default function ProjectCard({ project, onOpen, variant = "secondary" }) {
   const hook = project.hook || project.summary;
   const isFeatured = variant === "featured";
-  const isPdf = project.type === "pdf";
 
   return (
     <motion.button
@@ -17,25 +16,18 @@ export default function ProjectCard({ project, onOpen, variant = "secondary" }) 
         className={`
           relative overflow-hidden rounded-3xl bg-white/5 shadow-md
           flex flex-col
-          ${
-            isFeatured
-              ? "h-72 sm:h-88 lg:h-96"
-              : "h-56 sm:h-60"  /* a bit taller on mobile for PDFs */
-          }
+          ${isFeatured ? "h-72 sm:h-88 lg:h-96" : "h-52 sm:h-60"}
         `}
       >
         {/* top: thumbnail */}
-        <div className="relative flex-1 overflow-hidden bg-black/10">
+        <div className="relative flex-1 overflow-hidden">
           <motion.img
             src={project.thumbnail}
             alt={project.title}
-            className={`
-              h-full w-full
-              ${isPdf ? "object-contain" : "object-cover"}
-            `}
+            className="h-full w-full object-cover"
             loading="lazy"
             initial={{ scale: 1.02 }}
-            whileHover={{ scale: isPdf ? 1.02 : 1.06 }}
+            whileHover={{ scale: 1.06 }}
             transition={{ duration: 0.35, ease: "easeOut" }}
           />
 
