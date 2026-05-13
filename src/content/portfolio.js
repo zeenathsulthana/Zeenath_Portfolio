@@ -205,7 +205,7 @@ export const experiences = [
     id: "hebesec",
     company: "Hebesec Technologies",
     logo: `${base}media/images/hbs.jpg`,
-    role: "Marketing & Product Intern",
+    role: "Brand manager Intern",
     location: "Chennai, India",
     start: "Sept 2021",
     end: "Aug 2022",
